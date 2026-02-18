@@ -20,28 +20,22 @@ body, html {
     flex-direction: column;
 }
 
+/* 제목 왼쪽 정렬로 수정 (2페이지와 동일) */
 .slide-title { 
     font-size: 24px; 
     font-weight: 800; 
     color: #1e293b; 
     margin-bottom: 25px; 
-    text-align: center; /* 1페이지와 통일감 */
+    border-left: 6px solid #ff6600; 
+    padding-left: 15px;
     line-height: 1.2;
-}
-
-.slide-title::after {
-    content: '';
-    display: block;
-    width: 40px;
-    height: 4px;
-    background: #ff6600;
-    margin: 10px auto 0;
+    text-align: left;
 }
 
 .infographic-timeline {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 15px;
 }
 
 .info-step {
@@ -49,32 +43,29 @@ body, html {
     gap: 12px;
 }
 
+/* 타임라인 아이콘 스타일 통일 */
 .step-icon {
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
     background: #1e293b;
     color: #fff;
-    border-radius: 10px;
+    border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 800;
-    font-size: 13px;
+    font-size: 12px;
     flex-shrink: 0;
+    margin-top: 5px;
 }
 
+/* 모든 카드의 배경색과 테두리 통일 (강조 제거) */
 .step-card {
     background: #f8fafc;
-    padding: 15px;
+    padding: 16px;
     border-radius: 12px;
     flex-grow: 1;
     border: 1px solid #e2e8f0;
-}
-
-/* 라이브 단계 강조 */
-.step-card.highlight {
-    border: 2px solid #ff6600;
-    background: #fff7ed;
 }
 
 .step-tag {
@@ -86,14 +77,14 @@ body, html {
 }
 
 .step-card h3 {
-    font-size: 16px;
-    margin: 0 0 8px 0;
+    font-size: 17px;
+    margin: 0 0 10px 0;
     color: #1e293b;
     font-weight: 700;
 }
 
 .step-card p {
-    font-size: 12.5px;
+    font-size: 13px;
     line-height: 1.6;
     margin: 0;
     color: #475569;
