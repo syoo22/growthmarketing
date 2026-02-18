@@ -1,33 +1,83 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css");
 
-* { box-sizing: border-box; font-family: "Pretendard Variable", sans-serif; }
-body, html { margin: 0; padding: 0; width: 100%; height: 100%; background-color: #ffffff; }
-
-.slide-container {
-    width: 100%; height: 100vh;
-    display: flex; flex-direction: column;
-    padding: 60px 30px 120px 30px;
-    position: relative;
+* { 
+    box-sizing: border-box; 
+    font-family: "Pretendard Variable", sans-serif;
+    -webkit-font-smoothing: antialiased;
 }
 
-.brand-logo { margin-bottom: 30px; }
-.brand-logo img { height: 45px; width: auto; }
+body, html { 
+    margin: 0; padding: 0; width: 100%; height: 100%; 
+    background-color: #ffffff;
+}
 
-.title-layout { text-align: left; flex-grow: 1; }
+.slide-container {
+    width: 100%; 
+    height: 100vh; 
+    display: flex; 
+    flex-direction: column;
+    padding: 60px 30px 120px 30px; 
+    position: relative; 
+    overflow: hidden;
+}
+
+/* 로고 스타일: 크기를 30px로 작게 설정 */
+.brand-logo {
+    margin-bottom: 40px; /* 제목과의 간격 */
+    width: 100%;
+}
+
+.brand-logo img {
+    height: 30px; /* 로고 높이를 줄여서 작게 표현 */
+    width: auto;
+    object-fit: contain;
+}
+
+/* 텍스트 레이아웃: 왼쪽 정렬 유지 */
+.title-layout { 
+    text-align: left; 
+    flex-grow: 1;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: flex-start;
+}
+
 .title-layout h1 { 
     font-size: clamp(28px, 7.5vw, 36px); 
     color: #1e293b; 
-    line-height: 1.3; 
-    margin-bottom: 20px;
+    margin: 0 0 20px 0;
+    letter-spacing: -1px;
+    line-height: 1.3;
     word-break: keep-all; 
 }
+
 .title-layout .subtitle { 
-    font-size: 15px; color: #475569; background: #f1f5f9;
-    padding: 10px 15px; border-radius: 8px; display: inline-block;
+    font-size: 15px; 
+    color: #475569; 
+    background: #f1f5f9;
+    padding: 10px 15px;
+    border-radius: 8px;
+    line-height: 1.5;
+    display: inline-block;
+    max-width: fit-content;
 }
 
+/* 하단 주황색 바 */
 .title-footer { 
-    position: absolute; bottom: 0; left: 0; width: 100%; height: 70px; 
-    background-color: #ff6600; display: flex; align-items: center; 
-    padding-left: 30px; color: white; 
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 70px; 
+    background-color: #ff6600; 
+    display: flex; 
+    align-items: center; 
+    padding-left: 30px; 
+    color: white; 
+    z-index: 1;
+}
+
+.title-footer span { 
+    font-weight: 700; 
+    font-size: 14px; 
 }
