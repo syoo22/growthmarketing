@@ -14,50 +14,69 @@
 
 body, html { 
     margin: 0; padding: 0; width: 100%; height: 100%; 
-    background-color: #ffffff; /* 모바일 배경은 깔끔한 화이트 */
+    background-color: #ffffff; 
 }
 
-/* 슬라이드 컨테이너: 가로 잘림 방지 및 세로 꽉 참 */
+/* 슬라이드 컨테이너: 세로형 가이드북 최적화 */
 .slide-container {
     width: 100%; 
-    height: 100vh; /* 화면 높이에 100% 맞춤 */
+    height: 100vh; 
     display: flex; 
     flex-direction: column;
-    padding: 60px 25px 120px 25px; /* 하단 버튼 영역 여백 확보 */
+    padding: 60px 25px 120px 25px; 
     position: relative; 
-    overflow: hidden; /* 가로 스크롤 방지 */
+    overflow-x: hidden;
+    overflow-y: auto; /* 내용이 길어질 경우 스크롤 허용 */
 }
 
-/* 첫 페이지 타이틀 디자인 수정 (이미지 속 문제 해결) */
+/* [추가] 브랜드 로고 스타일 */
+.brand-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: -10px; /* 로고 위치를 살짝 위로 조정 */
+    width: 100%;
+}
+
+.brand-logo img {
+    height: 55px; /* 로고 크기 */
+    width: auto;
+    object-fit: contain;
+}
+
+/* 1페이지 타이틀 레이아웃 */
 .title-layout { 
     text-align: center; 
     flex-grow: 1;
     display: flex; 
     flex-direction: column; 
     justify-content: center; 
-    align-items: center; 
+    align-items: center;
+    padding-top: 0; /* 로고 여백을 고려하여 패딩 제거 */
 }
 
 .title-layout h1 { 
-    font-size: clamp(32px, 8vw, 42px); /* 화면 크기에 따라 폰트 자동 조절 */
+    font-size: clamp(30px, 7.5vw, 40px); 
     color: var(--secondary); 
     margin-bottom: 20px; 
     letter-spacing: -1.5px;
-    line-height: 1.25;
-    word-break: keep-all; /* 단어가 중간에 잘리지 않게 함 */
+    line-height: 1.35; /* 줄바꿈 간격 최적화 */
+    word-break: keep-all; 
 }
 
 .title-layout .subtitle { 
-    font-size: 16px; 
+    font-size: 15px; 
     color: var(--text); 
     background: #f1f5f9;
     padding: 10px 20px;
     border-radius: 30px;
     line-height: 1.4;
     max-width: 90%;
+    word-break: keep-all;
 }
 
-/* 하단 주황색 바 (반응형 수정) */
+/* 하단 주황색 바 */
 .title-footer { 
     position: absolute; 
     bottom: 0; 
@@ -78,7 +97,7 @@ body, html {
     letter-spacing: 0.5px; 
 }
 
-/* 일반 페이지 제목 크기 */
+/* 일반 페이지 공통 스타일 */
 .slide-title { 
     font-size: 26px; 
     font-weight: 800; 
@@ -89,16 +108,15 @@ body, html {
     line-height: 1.2; 
 }
 
-/* 타일/그리드 레이아웃 (세로로 쌓이게) */
 .tiled-grid { 
     display: grid; 
-    grid-template-columns: 1fr 1fr; /* 2열 배치 */
+    grid-template-columns: 1fr 1fr; 
     gap: 12px; 
 }
 
 .two-column { 
     display: flex;
-    flex-direction: column; /* 가로 배열에서 세로 배열로 변경 */
+    flex-direction: column; 
     gap: 20px;
 }
 
@@ -107,3 +125,7 @@ body, html {
     height: 200px;
     border-radius: 12px;
 }
+
+/* 배경 장식 blob (선택 사항) */
+.blob { position: absolute; width: 300px; height: 300px; background: radial-gradient(circle, rgba(255,102,0,0.05) 0%, rgba(255,102,0,0) 70%); border-radius: 50%; z-index: 0; }
+.blob-1 { top: -100px; right: -100px; }
