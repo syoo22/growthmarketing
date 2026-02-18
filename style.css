@@ -3,7 +3,6 @@
 
 * { 
     box-sizing: border-box; 
-    /* 전체 서체 적용 */
     font-family: "Pretendard Variable", Pretendard, sans-serif;
 }
 
@@ -11,42 +10,39 @@
     --primary: #ff6600; 
     --secondary: #1e293b; 
     --text: #475569; 
-    --bg: #cbd5e1; 
+    --bg: #ffffff; /* 모바일 배경은 깔끔하게 화이트 */
 }
 
 body, html { 
     margin: 0; padding: 0; width: 100%; height: 100%; 
-    overflow: hidden; background-color: var(--bg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background-color: #f1f5f9; /* 바깥 배경색 */
 }
 
-/* 슬라이드 컨테이너 최적화 */
+/* 슬라이드 컨테이너: 가로 고정 해제 및 세로형 최적화 */
 .slide-container {
-    width: 1280px; 
-    height: 720px;
+    width: 100%; 
+    max-width: 500px; /* PC에서 볼 때 가로폭 제한 */
+    min-height: 100vh; /* 최소 높이를 화면 꽉 차게 */
     background-color: #ffffff; 
     color: #1e293b;
     display: flex; 
     flex-direction: column;
-    padding: 60px 80px; 
+    padding: 80px 30px 60px 30px; /* 상단 여백 확보 */
+    margin: 0 auto;
     position: relative; 
-    overflow: hidden;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+    overflow-x: hidden;
+    overflow-y: auto; /* 내용이 길면 아래로 스크롤 */
 }
 
-/* 제목 및 텍스트 스타일 가독성 강화 */
-h1, h2, h3 { font-weight: 800; margin: 0; word-break: keep-all; }
-
+/* 제목 스타일: 모바일에 맞춰 크기 조절 */
 .slide-title { 
-    font-size: 48px; 
+    font-size: 32px; 
     font-weight: 800; 
     color: var(--secondary); 
-    margin-bottom: 40px; 
-    border-left: 10px solid var(--primary); 
-    padding-left: 25px; 
-    line-height: 1.1; 
+    margin-bottom: 30px; 
+    border-left: 8px solid var(--primary); 
+    padding-left: 18px; 
+    line-height: 1.2; 
 }
 
 .content-area { 
@@ -54,91 +50,86 @@ h1, h2, h3 { font-weight: 800; margin: 0; word-break: keep-all; }
     width: 100%; 
     display: flex; 
     flex-direction: column; 
-    justify-content: center; 
+    justify-content: flex-start; /* 상단부터 배치 */
     z-index: 2;
 }
 
-/* 메인 타이틀 레이아웃 (첫 페이지 깨짐 방지) */
+/* 메인 타이틀 레이아웃 (첫 페이지) */
 .title-layout { 
     text-align: center; 
     height: 100%; 
-    display: flex; 
-    flex-direction: column; 
-    justify-content: center; 
-    align-items: center; 
-    position: relative; 
+    padding-top: 50px;
 }
 
 .title-layout h1 { 
-    font-size: 72px; /* 크기 키움 */
+    font-size: 44px; /* 모바일 크기 */
     color: var(--secondary); 
-    margin-bottom: 25px; 
-    z-index: 2; 
-    letter-spacing: -2px;
-    line-height: 1.2;
+    margin-bottom: 20px; 
+    letter-spacing: -1.5px;
+    line-height: 1.3;
 }
 
 .title-layout .subtitle { 
-    font-size: 28px; 
+    font-size: 20px; 
     color: var(--text); 
-    font-weight: 500; 
-    z-index: 2; 
     background: #f1f5f9;
-    padding: 5px 20px;
+    padding: 6px 16px;
     border-radius: 50px;
+    display: inline-block;
 }
 
-/* 하단 바 디자인 (텍스트 겹침 방지 및 여백 조정) */
+/* 하단 바 디자인: 모바일 너비에 맞게 조정 */
 .title-footer { 
     position: absolute; 
     bottom: 0; 
-    left: -80px; 
-    width: calc(100% + 160px); 
-    height: 110px; 
+    left: 0; 
+    width: 100%; 
+    height: 90px; 
     background-color: var(--primary); 
     display: flex; 
+    flex-direction: column; /* 세로 정렬 */
     align-items: center; 
-    justify-content: space-between; /* 양쪽 끝 정렬 */
-    padding: 0 120px; 
+    justify-content: center; 
+    padding: 0 20px; 
     color: white; 
-    z-index: 1;
 }
 
-.title-footer span { font-weight: 800; font-size: 26px; letter-spacing: 1px; }
+.title-footer span { font-weight: 800; font-size: 20px; }
 
-/* 그리드 및 타일 */
-.tiled-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; width: 100%; }
+/* 그리드 및 타일: 4열에서 2열로 변경 */
+.tiled-grid { 
+    display: grid; 
+    grid-template-columns: repeat(2, 1fr); /* 모바일은 2열이 적당 */
+    gap: 15px; 
+    width: 100%; 
+}
 .tile { 
-    background: #f8fafc; 
-    padding: 30px; 
-    border-radius: 16px; 
-    border-top: 6px solid var(--primary); 
-    height: 100%; 
-    transition: transform 0.3s ease;
+    padding: 20px; 
+    border-radius: 12px; 
+    border-top: 4px solid var(--primary); 
 }
-.tile:hover { transform: translateY(-10px); }
-.tile i { font-size: 40px; color: var(--primary); margin-bottom: 20px; }
-.tile h3 { font-size: 24px; margin-bottom: 10px; }
+.tile i { font-size: 30px; margin-bottom: 15px; }
+.tile h3 { font-size: 18px; margin-bottom: 8px; }
+.tile p { font-size: 14px; line-height: 1.4; }
 
-/* 2컬럼 레이아웃 */
-.two-column { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 50px; align-items: center; }
-.text-side h3 { font-size: 32px; color: var(--primary); margin-bottom: 20px; }
-.text-side p { font-size: 22px; line-height: 1.6; margin-bottom: 15px; color: #334155; }
+/* 2컬럼 레이아웃: 가로 배열에서 세로 배열로 변경 */
+.two-column { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 30px; 
+}
+.text-side h3 { font-size: 24px; margin-bottom: 15px; }
+.text-side p { font-size: 17px; line-height: 1.6; }
 
 .image-side { 
-    border-radius: 24px; 
-    overflow: hidden; 
-    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); 
-    height: 450px; 
+    border-radius: 16px; 
+    height: 250px; /* 높이 고정 */
 }
-.image-side img { width: 100%; height: 100%; object-fit: cover; }
 
-/* 테이블 스타일 강화 */
-table { width: 100%; border-collapse: separate; border-spacing: 0; margin-top: 20px; border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; }
-th { background: #f8fafc; color: var(--secondary); padding: 25px; text-align: center; border-bottom: 3px solid var(--primary); font-size: 22px; }
-td { padding: 20px; border-bottom: 1px solid #e2e8f0; font-size: 20px; text-align: center; background: white; }
+/* 테이블 스타일: 모바일 가로폭 대응 */
+table { font-size: 14px; }
+th { padding: 15px 10px; font-size: 16px; }
+td { padding: 12px 10px; font-size: 15px; }
 
-/* 장식 요소 (blob) */
-.blob { position: absolute; width: 500px; height: 500px; background: radial-gradient(circle, rgba(255,102,0,0.08) 0%, rgba(255,102,0,0) 70%); border-radius: 50%; z-index: 0; }
-.blob-1 { top: -200px; right: -200px; }
-.blob-2 { bottom: -150px; left: -150px; background: radial-gradient(circle, rgba(30,41,59,0.05) 0%, rgba(30,41,59,0) 70%); }
+/* 장식 요소 (blob) 크기 축소 */
+.blob { position: absolute; width: 300px; height: 300px; opacity: 0.5; }
