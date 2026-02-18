@@ -2,24 +2,61 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style6.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
     <div class="slide-container">
-        <h2 class="slide-title">네이버 GFA 운영 전략</h2>
-        <div class="content-area">
-            <div class="two-column">
-                <div class="text-side">
-                    <h3>국내 최대 지면 타겟팅 및 엄격한 QA</h3>
-                    <p><strong>1. 전략적 세팅:</strong> 인지도 및 트래픽 캠페인으로 접근 시 오히려 전환 효율이 높은 특이점이 존재합니다.</p>
-                    <p><strong>2. 노출 지면:</strong> 스마트채널, 네이버 메인, 밴드/웹툰 통합 지면을 전략적으로 믹스합니다.</p>
-                    <p><strong>3. 엄격한 QA:</strong> 소재 규격 미준수 시 반려가 빈번하므로 제작 단계부터 엄격한 검수가 필요합니다.</p>
+        <h2 class="slide-title">오디언스 타겟팅 및 최적화 전략</h2>
+        
+        <div class="target-grid">
+            <div class="target-card">
+                <div class="target-tag">Custom</div>
+                <h3>맞춤타겟</h3>
+                <p>내부 데이터(DB, 로그) 기반 타겟으로 전환 가능성 예측력이 가장 높음</p>
+            </div>
+            <div class="target-card">
+                <div class="target-tag">Lookalike</div>
+                <h3>유사타겟</h3>
+                <p>
+                    맞춤타겟과 유사한 패턴의 유저 자동 생성<br>
+                    • <b>메타: 2% / 구글: 2.5%</b> 권장
+                </p>
+            </div>
+            <div class="target-card">
+                <div class="target-tag">Detailed</div>
+                <h3>상세타겟</h3>
+                <p>관심사·행동 등 외부 데이터 활용으로 신규 유입 확장에 적합</p>
+            </div>
+        </div>
+
+        <div class="exclusion-section">
+            <div class="section-label">EXCLUSION STRATEGY</div>
+            <div class="exclusion-box">
+                <div class="exclusion-header">
+                    <i class="fas fa-user-minus"></i> <span>디타겟팅(Exclusion) 전략</span>
                 </div>
-                <div class="image-side">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" alt="Naver GFA">
+                <p>광고 노출이 불필요하거나 효율이 낮은 그룹을 제외하여 광고비 낭비 방지</p>
+                <div class="exclusion-usage">
+                    <b>멋사 활용법:</b> <span>이전 기수 수강생</span> 및 <span>지원 완료자 DB</span>를 타겟에서 제외하여, 중복 노출을 방지하고 신규 유입 유도에만 예산을 집중함
                 </div>
             </div>
+        </div>
+
+        <div class="optimization-grid">
+            <div class="opt-box">
+                <div class="opt-header"><i class="fas fa-robot"></i> 어드밴티지+</div>
+                <p>머신러닝 기반 자동 확장 노출</p>
+            </div>
+            <div class="opt-box">
+                <div class="opt-header"><i class="fas fa-sliders-h"></i> 가치조정</div>
+                <p>조건별 입찰가 증감으로 예산 집중</p>
+            </div>
+        </div>
+
+        <div class="title-footer">
+            <span>LIKELION GROWTH MARKETING TEAM</span>
         </div>
     </div>
 </body>
