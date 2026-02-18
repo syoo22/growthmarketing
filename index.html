@@ -2,49 +2,72 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>2026 그로스 마케팅 온보딩</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         body, html { 
-            margin: 0; padding: 0; height: 100%; overflow: hidden; 
-            background: #cbd5e1; display: flex; justify-content: center; align-items: center; 
-            perspective: 2000px; /* 3D 효과를 위한 깊이감 */
+            margin: 0; padding: 0; height: 100%; width: 100%; overflow: hidden; 
+            background: #1e293b; /* 배경을 어둡게 하여 콘텐츠 집중도 향상 */
+            display: flex; justify-content: center; align-items: center; 
+            perspective: 2000px;
         }
 
-        /* 슬라이드를 감싸는 프레임 */
+        /* 세로형 가이드북 컨테이너 */
         .viewer-container {
-            width: 1280px;
-            height: 720px;
+            width: 100vw;
+            height: 100vh;
+            max-width: 500px; /* PC에서 볼 때 가이드북 느낌 유지 */
             position: relative;
             background: #fff;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 0 100px rgba(0, 0, 0, 0.5);
         }
 
         #slide-viewer { 
             width: 100%; height: 100%; border: none; 
             position: absolute; top: 0; left: 0;
-            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s; 
-            transform-origin: left center; /* 책등을 고정점으로 설정 */
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s; 
+            transform-origin: left center;
             backface-visibility: hidden;
         }
 
-        /* 책장이 왼쪽으로 넘어가는 효과 */
+        /* 종이 넘김 효과 */
         .page-flip {
-            transform: rotateY(-90deg);
+            transform: rotateY(-100deg);
             opacity: 0;
         }
 
-        /* 새로운 페이지가 나타날 때의 효과 */
         .page-enter {
-            transform: translateX(30px);
+            transform: translateX(50px);
             opacity: 0;
         }
 
-        /* 컨트롤 및 하단바 */
-        .controls { position: fixed; bottom: 30px; right: 30px; display: flex; gap: 10px; z-index: 10; }
-        .btn { width: 50px; height: 50px; border-radius: 50%; border: none; background: #1e293b; color: white; cursor: pointer; transition: 0.2s; }
-        .btn:hover { background: #ff6600; transform: scale(1.1); }
-        .page-num { position: fixed; bottom: 30px; left: 30px; background: white; padding: 8px 20px; border-radius: 20px; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.1); z-index: 10; }
+        /* 모바일 UI 최적화 */
+        .controls { 
+            position: fixed; bottom: 30px; right: 20px; 
+            display: flex; flex-direction: column; gap: 15px; z-index: 10; 
+        }
+        .btn { 
+            width: 55px; height: 55px; border-radius: 50%; border: none; 
+            background: rgba(255, 102, 0, 0.9); color: white; 
+            cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            font-size: 20px;
+        }
+        
+        .page-num { 
+            position: fixed; top: 20px; left: 20px; 
+            background: rgba(255, 255, 255, 0.9); padding: 6px 18px; 
+            border-radius: 20px; font-weight: bold; font-family: sans-serif;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); z-index: 10; 
+            font-size: 14px; color: #1e293b;
+        }
+
+        /* PC용 안내 */
+        .pc-hint {
+            position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%);
+            color: rgba(255,255,255,0.4); font-size: 12px; pointer-events: none;
+        }
+        @media (max-width: 600px) { .pc-hint { display: none; } }
     </style>
 </head>
 <body>
@@ -55,9 +78,11 @@
     </div>
 
     <div class="controls">
-        <button class="btn" onclick="prev()"><i class="fa-solid fa-chevron-left"></i></button>
         <button class="btn" onclick="next()"><i class="fa-solid fa-chevron-right"></i></button>
+        <button class="btn" onclick="prev()" style="background: rgba(30,41,59,0.8); width: 45px; height: 45px;"><i class="fa-solid fa-chevron-left"></i></button>
     </div>
+
+    <div class="pc-hint">방향키나 스페이스바로 페이지를 넘길 수 있습니다.</div>
 
     <script>
         let cur = 1;
@@ -70,35 +95,42 @@
             if (isAnimating) return;
             isAnimating = true;
 
-            // 1. 현재 페이지 넘기기 애니메이션 시작
             viewer.classList.add('page-flip');
 
             setTimeout(() => {
-                // 2. 소스 교체 및 초기화
                 cur = nextPage;
                 viewer.src = `slide${cur}.html`;
                 num.innerText = `${cur} / ${total}`;
 
-                // 3. 새 페이지 입장을 위해 클래스 교체
                 viewer.classList.remove('page-flip');
                 viewer.classList.add('page-enter');
 
-                // 4. 새 페이지 로드 후 자연스럽게 나타나기
                 viewer.onload = () => {
                     setTimeout(() => {
                         viewer.classList.remove('page-enter');
                         isAnimating = false;
                     }, 50);
                 };
-            }, 500); // 0.5초 후 페이지 내용 교체
+            }, 500);
         }
 
         function next() { if(cur < total) move(cur + 1); }
         function prev() { if(cur > 1) move(cur - 1); }
 
         document.addEventListener('keydown', (e) => {
-            if(e.key === 'ArrowRight' || e.key === ' ') next();
+            if(e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter') next();
             if(e.key === 'ArrowLeft') prev();
+        });
+
+        // 모바일 스와이프 지원 (선택사항)
+        let touchstartX = 0;
+        let touchendX = 0;
+        
+        document.addEventListener('touchstart', e => { touchstartX = e.changedTouches[0].screenX; });
+        document.addEventListener('touchend', e => {
+            touchendX = e.changedTouches[0].screenX;
+            if (touchstartX - touchendX > 50) next();
+            if (touchendX - touchstartX > 50) prev();
         });
     </script>
 </body>
