@@ -1,169 +1,137 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>2026 그로스 마케팅 온보딩 가이드북</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
-        body, html { 
-            margin: 0; padding: 0; height: 100%; width: 100%; overflow: hidden; 
-            background: #1e293b; 
-            display: flex; justify-content: center; align-items: center; 
-            perspective: 2000px;
-        }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>2026 그로스 마케팅 온보딩 가이드북</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body, html { 
+            margin: 0; padding: 0; height: 100%; width: 100%; overflow: hidden; 
+            background: #1e293b; /* 배경을 어둡게 하여 콘텐츠 집중도 향상 */
+            display: flex; justify-content: center; align-items: center; 
+            perspective: 2000px;
+        }
 
-        /* 전체 컨테이너: PC에서는 두 페이지 합친 너비 */
-        .viewer-container {
-            width: 100vw;
-            height: 100vh;
-            max-width: 500px; /* 기본(모바일) */
-            position: relative;
-            background: #fff;
-            box-shadow: 0 0 100px rgba(0, 0, 0, 0.5);
-            display: flex; /* 두 iframe 나란히 배치용 */
-            transition: max-width 0.5s ease;
-        }
+        /* 세로형 가이드북 컨테이너 */
+        .viewer-container {
+            width: 100vw;
+            height: 100vh;
+            max-width: 500px; /* PC에서 볼 때 가이드북 느낌 유지 */
+            position: relative;
+            background: #fff;
+            box-shadow: 0 0 100px rgba(0, 0, 0, 0.5);
+        }
 
-        /* iframe 공통 스타일 */
-        #slide-viewer-left, #slide-viewer-right { 
-            width: 100%; height: 100%; border: none; 
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s; 
-            backface-visibility: hidden;
-        }
+        #slide-viewer { 
+            width: 100%; height: 100%; border: none; 
+            position: absolute; top: 0; left: 0;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s; 
+            transform-origin: left center;
+            backface-visibility: hidden;
+        }
 
-        /* PC 와이드 화면용 레이아웃 (1024px 이상) */
-        @media (min-width: 1024px) {
-            .viewer-container {
-                max-width: 1000px; /* 두 페이지 합친 너비 */
-                background: #f1f5f9;
-            }
-            #slide-viewer-left {
-                border-right: 1px solid #ddd; /* 책 중앙선 효과 */
-                display: block;
-            }
-        }
+        /* 종이 넘김 효과 */
+        .page-flip {
+            transform: rotateY(-100deg);
+            opacity: 0;
+        }
 
-        /* 모바일에서는 왼쪽 iframe을 숨김 */
-        @media (max-width: 1023px) {
-            #slide-viewer-left {
-                display: none;
-            }
-        }
+        .page-enter {
+            transform: translateX(50px);
+            opacity: 0;
+        }
 
-        /* 페이지 전환 효과 */
-        .page-flip { transform: rotateY(-10deg); opacity: 0.8; }
-        .page-enter { transform: translateX(20px); opacity: 0; }
+        /* 모바일 UI 최적화 */
+        .controls { 
+            position: fixed; bottom: 30px; right: 20px; 
+            display: flex; flex-direction: column; gap: 15px; z-index: 10; 
+        }
+        .btn { 
+            width: 55px; height: 55px; border-radius: 50%; border: none; 
+            background: rgba(255, 102, 0, 0.9); color: white; 
+            cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            font-size: 20px;
+        }
+        
+        .page-num { 
+            position: fixed; top: 20px; left: 20px; 
+            background: rgba(255, 255, 255, 0.9); padding: 6px 18px; 
+            border-radius: 20px; font-weight: bold; font-family: sans-serif;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); z-index: 10; 
+            font-size: 14px; color: #1e293b;
+        }
 
-        .controls { 
-            position: fixed; bottom: 30px; right: 20px; 
-            display: flex; flex-direction: column; gap: 15px; z-index: 10; 
-        }
-        .btn { 
-            width: 55px; height: 55px; border-radius: 50%; border: none; 
-            background: rgba(255, 102, 0, 0.9); color: white; 
-            cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            font-size: 20px;
-        }
-        
-        .page-num { 
-            position: fixed; top: 20px; left: 20px; 
-            background: rgba(255, 255, 255, 0.9); padding: 6px 18px; 
-            border-radius: 20px; font-weight: bold; font-family: sans-serif;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1); z-index: 10; 
-            font-size: 14px; color: #1e293b;
-        }
-
-        .pc-hint {
-            position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%);
-            color: rgba(255,255,255,0.4); font-size: 12px; pointer-events: none;
-        }
-    </style>
+        /* PC용 안내 */
+        .pc-hint {
+            position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%);
+            color: rgba(255,255,255,0.4); font-size: 12px; pointer-events: none;
+        }
+        @media (max-width: 600px) { .pc-hint { display: none; } }
+    </style>
 </head>
 <body>
-    <div class="page-num" id="pageNum">1 / 10</div>
-    
-    <div class="viewer-container">
-        <iframe id="slide-viewer-left" src=""></iframe>
-        <iframe id="slide-viewer-right" src="slide1.html"></iframe>
-    </div>
+    <div class="page-num" id="pageNum">1 / 10</div>
+    
+    <div class="viewer-container">
+        <iframe id="slide-viewer" src="slide1.html"></iframe>
+    </div>
 
-    <div class="controls">
-        <button class="btn" onclick="next()"><i class="fa-solid fa-chevron-right"></i></button>
-        <button class="btn" onclick="prev()" style="background: rgba(30,41,59,0.8); width: 45px; height: 45px;"><i class="fa-solid fa-chevron-left"></i></button>
-    </div>
+    <div class="controls">
+        <button class="btn" onclick="next()"><i class="fa-solid fa-chevron-right"></i></button>
+        <button class="btn" onclick="prev()" style="background: rgba(30,41,59,0.8); width: 45px; height: 45px;"><i class="fa-solid fa-chevron-left"></i></button>
+    </div>
 
-    <div class="pc-hint">PC에서는 양면 보기 모드가 활성화됩니다.</div>
+    <div class="pc-hint">방향키나 스페이스바로 페이지를 넘길 수 있습니다.</div>
 
-    <script>
-        let cur = 1;
-        const total = 10;
-        const viewerL = document.getElementById('slide-viewer-left');
-        const viewerR = document.getElementById('slide-viewer-right');
-        const num = document.getElementById('pageNum');
-        let isAnimating = false;
+    <script>
+        let cur = 1;
+        const total = 10;
+        const viewer = document.getElementById('slide-viewer');
+        const num = document.getElementById('pageNum');
+        let isAnimating = false;
 
-        function updateView() {
-            const isPC = window.innerWidth >= 1024;
+        function move(nextPage) {
+            if (isAnimating) return;
+            isAnimating = true;
 
-            if (isPC) {
-                // PC 모드: 현재 페이지가 짝수면 (cur-1, cur), 홀수면 (cur, cur+1) 등으로 구성 가능하나 
-                // 직관적으로 '현재 페이지'를 오른쪽에 배치하는 방식을 많이 씁니다.
-                if (cur > 1) {
-                    viewerL.src = `slide${cur - 1}.html`;
-                    viewerL.style.visibility = 'visible';
-                } else {
-                    viewerL.style.visibility = 'hidden'; // 1페이지일 땐 왼쪽 비움 (표지 느낌)
-                }
-                viewerR.src = `slide${cur}.html`;
-            } else {
-                // 모바일 모드: 오른쪽 iframe만 사용
-                viewerR.src = `slide${cur}.html`;
-            }
-            
-            num.innerText = `${cur} / ${total}`;
-        }
+            viewer.classList.add('page-flip');
 
-        function move(nextPage) {
-            if (isAnimating) return;
-            isAnimating = true;
+            setTimeout(() => {
+                cur = nextPage;
+                viewer.src = `slide${cur}.html`;
+                num.innerText = `${cur} / ${total}`;
 
-            // 전환 애니메이션
-            viewerR.classList.add('page-flip');
-            
-            setTimeout(() => {
-                cur = nextPage;
-                updateView();
-                
-                viewerR.classList.remove('page-flip');
-                viewerR.classList.add('page-enter');
+                viewer.classList.remove('page-flip');
+                viewer.classList.add('page-enter');
 
-                setTimeout(() => {
-                    viewerR.classList.remove('page-enter');
-                    isAnimating = false;
-                }, 300);
-            }, 400);
-        }
+                viewer.onload = () => {
+                    setTimeout(() => {
+                        viewer.classList.remove('page-enter');
+                        isAnimating = false;
+                    }, 50);
+                };
+            }, 500);
+        }
 
-        function next() { if(cur < total) move(cur + 1); }
-        function prev() { if(cur > 1) move(cur - 1); }
+        function next() { if(cur < total) move(cur + 1); }
+        function prev() { if(cur > 1) move(cur - 1); }
 
-        document.addEventListener('keydown', (e) => {
-            if(e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter') next();
-            if(e.key === 'ArrowLeft') prev();
-        });
+        document.addEventListener('keydown', (e) => {
+            if(e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter') next();
+            if(e.key === 'ArrowLeft') prev();
+        });
 
-        window.addEventListener('resize', updateView);
-        window.onload = updateView;
-
-        // 모바일 스와이프
-        let touchstartX = 0;
-        document.addEventListener('touchstart', e => { touchstartX = e.changedTouches[0].screenX; });
-        document.addEventListener('touchend', e => {
-            let touchendX = e.changedTouches[0].screenX;
-            if (touchstartX - touchendX > 50) next();
-            if (touchendX - touchstartX > 50) prev();
-        });
-    </script>
+        // 모바일 스와이프 지원 (선택사항)
+        let touchstartX = 0;
+        let touchendX = 0;
+        
+        document.addEventListener('touchstart', e => { touchstartX = e.changedTouches[0].screenX; });
+        document.addEventListener('touchend', e => {
+            touchendX = e.changedTouches[0].screenX;
+            if (touchstartX - touchendX > 50) next();
+            if (touchendX - touchstartX > 50) prev();
+        });
+    </script>
 </body>
 </html>
