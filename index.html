@@ -5,17 +5,55 @@
     <title>2026 그로스 마케팅 온보딩</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; background: #cbd5e1; display: flex; justify-content: center; align-items: center; }
-        #slide-viewer { width: 1280px; height: 720px; border: none; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); transition: opacity 0.3s; }
-        .controls { position: fixed; bottom: 30px; right: 30px; display: flex; gap: 10px; }
-        .btn { width: 50px; height: 50px; border-radius: 50%; border: none; background: #1e293b; color: white; cursor: pointer; }
-        .btn:hover { background: #ff6600; }
-        .page-num { position: fixed; bottom: 30px; left: 30px; background: white; padding: 5px 15px; border-radius: 20px; font-weight: bold; }
+        body, html { 
+            margin: 0; padding: 0; height: 100%; overflow: hidden; 
+            background: #cbd5e1; display: flex; justify-content: center; align-items: center; 
+            perspective: 2000px; /* 3D 효과를 위한 깊이감 */
+        }
+
+        /* 슬라이드를 감싸는 프레임 */
+        .viewer-container {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            background: #fff;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+        }
+
+        #slide-viewer { 
+            width: 100%; height: 100%; border: none; 
+            position: absolute; top: 0; left: 0;
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s; 
+            transform-origin: left center; /* 책등을 고정점으로 설정 */
+            backface-visibility: hidden;
+        }
+
+        /* 책장이 왼쪽으로 넘어가는 효과 */
+        .page-flip {
+            transform: rotateY(-90deg);
+            opacity: 0;
+        }
+
+        /* 새로운 페이지가 나타날 때의 효과 */
+        .page-enter {
+            transform: translateX(30px);
+            opacity: 0;
+        }
+
+        /* 컨트롤 및 하단바 */
+        .controls { position: fixed; bottom: 30px; right: 30px; display: flex; gap: 10px; z-index: 10; }
+        .btn { width: 50px; height: 50px; border-radius: 50%; border: none; background: #1e293b; color: white; cursor: pointer; transition: 0.2s; }
+        .btn:hover { background: #ff6600; transform: scale(1.1); }
+        .page-num { position: fixed; bottom: 30px; left: 30px; background: white; padding: 8px 20px; border-radius: 20px; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.1); z-index: 10; }
     </style>
 </head>
 <body>
     <div class="page-num" id="pageNum">1 / 10</div>
-    <iframe id="slide-viewer" src="slide1.html"></iframe>
+    
+    <div class="viewer-container">
+        <iframe id="slide-viewer" src="slide1.html"></iframe>
+    </div>
+
     <div class="controls">
         <button class="btn" onclick="prev()"><i class="fa-solid fa-chevron-left"></i></button>
         <button class="btn" onclick="next()"><i class="fa-solid fa-chevron-right"></i></button>
@@ -26,17 +64,37 @@
         const total = 10;
         const viewer = document.getElementById('slide-viewer');
         const num = document.getElementById('pageNum');
+        let isAnimating = false;
 
-        function move() {
-            viewer.style.opacity = 0;
+        function move(nextPage) {
+            if (isAnimating) return;
+            isAnimating = true;
+
+            // 1. 현재 페이지 넘기기 애니메이션 시작
+            viewer.classList.add('page-flip');
+
             setTimeout(() => {
+                // 2. 소스 교체 및 초기화
+                cur = nextPage;
                 viewer.src = `slide${cur}.html`;
                 num.innerText = `${cur} / ${total}`;
-                viewer.onload = () => viewer.style.opacity = 1;
-            }, 300);
+
+                // 3. 새 페이지 입장을 위해 클래스 교체
+                viewer.classList.remove('page-flip');
+                viewer.classList.add('page-enter');
+
+                // 4. 새 페이지 로드 후 자연스럽게 나타나기
+                viewer.onload = () => {
+                    setTimeout(() => {
+                        viewer.classList.remove('page-enter');
+                        isAnimating = false;
+                    }, 50);
+                };
+            }, 500); // 0.5초 후 페이지 내용 교체
         }
-        function next() { if(cur < total) { cur++; move(); } }
-        function prev() { if(cur > 1) { cur--; move(); } }
+
+        function next() { if(cur < total) move(cur + 1); }
+        function prev() { if(cur > 1) move(cur - 1); }
 
         document.addEventListener('keydown', (e) => {
             if(e.key === 'ArrowRight' || e.key === ' ') next();
