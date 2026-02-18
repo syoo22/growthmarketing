@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* 7페이지 전용 추가 스타일 (타일 레이아웃 보정) */
+        .tiled-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+        .tile { display: flex; flex-direction: row; gap: 20px; align-items: center; }
+        .tile i { margin-bottom: 0; }
+        .tip-box { margin-top: 40px; padding: 25px; background: #fff7ed; border-radius: 12px; border: 1px solid #ffedd5; text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <h2 class="slide-title">잠재고객 타겟팅 전략 기초</h2>
+        <div class="content-area">
+            <div class="tiled-grid">
+                <div class="tile">
+                    <i class="fa-solid fa-database"></i>
+                    <div><h3>맞춤 타겟</h3><p>자사 DB 및 웹사이트 로그 기반 핵심 타겟</p></div>
+                </div>
+                <div class="tile">
+                    <i class="fa-solid fa-magnifying-glass-chart"></i>
+                    <div><h3>상세 타겟</h3><p>관심사, 인구통계 플랫폼 외부 데이터 활용</p></div>
+                </div>
+                <div class="tile">
+                    <i class="fa-solid fa-people-arrows"></i>
+                    <div><h3>유사 타겟</h3><p>AI가 생성한 유사 행동 유저 (2~5%)</p></div>
+                </div>
+                <div class="tile">
+                    <i class="fa-solid fa-user-slash"></i>
+                    <div><h3>디타겟팅</h3><p>기지원자 제외를 통한 광고 효율 개선</p></div>
+                </div>
+            </div>
+            <div class="tip-box">
+                <p style="color: #ff6600; font-weight: 700; font-size: 20px; margin: 0;">
+                    <i class="fa-solid fa-circle-exclamation"></i> 매체별 권장 유사타겟: 메타(2, 5%) | 구글(2.5, 5%)
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
