@@ -1,0 +1,120 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css");
+
+* { 
+    box-sizing: border-box; 
+    font-family: "Pretendard Variable", sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+body, html { 
+    margin: 0; padding: 0; width: 100%; 
+    background-color: #ffffff;
+}
+
+.slide-container {
+    width: 100%; 
+    min-height: 100vh;
+    padding: 40px 20px 100px 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.slide-title { 
+    font-size: 24px; 
+    font-weight: 800; 
+    color: #1e293b; 
+    margin-bottom: 25px; 
+    text-align: center; /* 1페이지와 통일감 */
+    line-height: 1.2;
+}
+
+.slide-title::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 4px;
+    background: #ff6600;
+    margin: 10px auto 0;
+}
+
+.infographic-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.info-step {
+    display: flex;
+    gap: 12px;
+}
+
+.step-icon {
+    width: 45px;
+    height: 45px;
+    background: #1e293b;
+    color: #fff;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 13px;
+    flex-shrink: 0;
+}
+
+.step-card {
+    background: #f8fafc;
+    padding: 15px;
+    border-radius: 12px;
+    flex-grow: 1;
+    border: 1px solid #e2e8f0;
+}
+
+/* 라이브 단계 강조 */
+.step-card.highlight {
+    border: 2px solid #ff6600;
+    background: #fff7ed;
+}
+
+.step-tag {
+    font-size: 10px;
+    font-weight: 800;
+    color: #ff6600;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.step-card h3 {
+    font-size: 16px;
+    margin: 0 0 8px 0;
+    color: #1e293b;
+    font-weight: 700;
+}
+
+.step-card p {
+    font-size: 12.5px;
+    line-height: 1.6;
+    margin: 0;
+    color: #475569;
+    word-break: keep-all;
+}
+
+.title-footer { 
+    position: fixed;
+    bottom: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 60px; 
+    background-color: #ff6600; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    color: white; 
+    z-index: 10;
+}
+
+.title-footer span { 
+    font-weight: 700; 
+    font-size: 14px; 
+}
