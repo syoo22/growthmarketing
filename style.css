@@ -1,5 +1,12 @@
-/* style.css */
-* { box-sizing: border-box; }
+/* 1. 프리텐다드 서체 로드 */
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css");
+
+* { 
+    box-sizing: border-box; 
+    /* 전체 서체 적용 */
+    font-family: "Pretendard Variable", Pretendard, sans-serif;
+}
+
 :root { 
     --primary: #ff6600; 
     --secondary: #1e293b; 
@@ -10,45 +17,128 @@
 body, html { 
     margin: 0; padding: 0; width: 100%; height: 100%; 
     overflow: hidden; background-color: var(--bg);
-    font-family: 'Lato', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+/* 슬라이드 컨테이너 최적화 */
 .slide-container {
-    width: 1280px; height: 720px;
-    background-color: #ffffff; color: #1e293b;
-    margin: 0 auto; display: flex; flex-direction: column;
-    padding: 60px 80px; position: relative; overflow: hidden;
+    width: 1280px; 
+    height: 720px;
+    background-color: #ffffff; 
+    color: #1e293b;
+    display: flex; 
+    flex-direction: column;
+    padding: 60px 80px; 
+    position: relative; 
+    overflow: hidden;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
 }
 
-h1, h2, h3 { font-family: 'Poppins', sans-serif; margin: 0; }
-.slide-title { font-size: 42px; font-weight: 700; color: var(--secondary); margin-bottom: 40px; border-left: 8px solid var(--primary); padding-left: 20px; line-height: 1.2; }
-.content-area { flex-grow: 1; width: 100%; display: flex; flex-direction: column; justify-content: center; }
+/* 제목 및 텍스트 스타일 가독성 강화 */
+h1, h2, h3 { font-weight: 800; margin: 0; word-break: keep-all; }
 
-/* 메인 타이틀 레이아웃 */
-.title-layout { text-align: center; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; }
-.title-layout h1 { font-size: 68px; color: var(--secondary); margin-bottom: 20px; z-index: 2; }
-.title-layout .subtitle { font-size: 28px; color: var(--text); font-weight: 400; z-index: 2; }
+.slide-title { 
+    font-size: 48px; 
+    font-weight: 800; 
+    color: var(--secondary); 
+    margin-bottom: 40px; 
+    border-left: 10px solid var(--primary); 
+    padding-left: 25px; 
+    line-height: 1.1; 
+}
+
+.content-area { 
+    flex-grow: 1; 
+    width: 100%; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    z-index: 2;
+}
+
+/* 메인 타이틀 레이아웃 (첫 페이지 깨짐 방지) */
+.title-layout { 
+    text-align: center; 
+    height: 100%; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    position: relative; 
+}
+
+.title-layout h1 { 
+    font-size: 72px; /* 크기 키움 */
+    color: var(--secondary); 
+    margin-bottom: 25px; 
+    z-index: 2; 
+    letter-spacing: -2px;
+    line-height: 1.2;
+}
+
+.title-layout .subtitle { 
+    font-size: 28px; 
+    color: var(--text); 
+    font-weight: 500; 
+    z-index: 2; 
+    background: #f1f5f9;
+    padding: 5px 20px;
+    border-radius: 50px;
+}
+
+/* 하단 바 디자인 (텍스트 겹침 방지 및 여백 조정) */
 .title-footer { 
-    position: absolute; bottom: 0; left: -80px; width: calc(100% + 160px); height: 100px; 
-    background-color: var(--primary); display: flex; align-items: center; 
-    padding: 0 80px; color: white; font-weight: 700; font-size: 24px; z-index: 1;
+    position: absolute; 
+    bottom: 0; 
+    left: -80px; 
+    width: calc(100% + 160px); 
+    height: 110px; 
+    background-color: var(--primary); 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; /* 양쪽 끝 정렬 */
+    padding: 0 120px; 
+    color: white; 
+    z-index: 1;
 }
+
+.title-footer span { font-weight: 800; font-size: 26px; letter-spacing: 1px; }
 
 /* 그리드 및 타일 */
 .tiled-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; width: 100%; }
-.tile { background: #f8fafc; padding: 30px; border-radius: 12px; border-top: 4px solid var(--primary); height: 100%; }
-.tile i { font-size: 36px; color: var(--primary); margin-bottom: 20px; }
+.tile { 
+    background: #f8fafc; 
+    padding: 30px; 
+    border-radius: 16px; 
+    border-top: 6px solid var(--primary); 
+    height: 100%; 
+    transition: transform 0.3s ease;
+}
+.tile:hover { transform: translateY(-10px); }
+.tile i { font-size: 40px; color: var(--primary); margin-bottom: 20px; }
+.tile h3 { font-size: 24px; margin-bottom: 10px; }
 
 /* 2컬럼 레이아웃 */
-.two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-.image-side { border-radius: 20px; overflow: hidden; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); height: 400px; }
+.two-column { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 50px; align-items: center; }
+.text-side h3 { font-size: 32px; color: var(--primary); margin-bottom: 20px; }
+.text-side p { font-size: 22px; line-height: 1.6; margin-bottom: 15px; color: #334155; }
+
+.image-side { 
+    border-radius: 24px; 
+    overflow: hidden; 
+    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); 
+    height: 450px; 
+}
 .image-side img { width: 100%; height: 100%; object-fit: cover; }
 
-/* 테이블 */
-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-th { background: #f8fafc; color: var(--secondary); padding: 20px; text-align: left; border-bottom: 3px solid var(--primary); }
-td { padding: 20px; border-bottom: 1px solid #e2e8f0; font-size: 18px; }
+/* 테이블 스타일 강화 */
+table { width: 100%; border-collapse: separate; border-spacing: 0; margin-top: 20px; border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; }
+th { background: #f8fafc; color: var(--secondary); padding: 25px; text-align: center; border-bottom: 3px solid var(--primary); font-size: 22px; }
+td { padding: 20px; border-bottom: 1px solid #e2e8f0; font-size: 20px; text-align: center; background: white; }
 
-/* 장식 요소 */
-.blob { position: absolute; width: 400px; height: 400px; background: rgba(255, 102, 0, 0.05); border-radius: 50%; z-index: 0; }
-.blob-1 { top: -150px; right: -150px; }
+/* 장식 요소 (blob) */
+.blob { position: absolute; width: 500px; height: 500px; background: radial-gradient(circle, rgba(255,102,0,0.08) 0%, rgba(255,102,0,0) 70%); border-radius: 50%; z-index: 0; }
+.blob-1 { top: -200px; right: -200px; }
+.blob-2 { bottom: -150px; left: -150px; background: radial-gradient(circle, rgba(30,41,59,0.05) 0%, rgba(30,41,59,0) 70%); }
