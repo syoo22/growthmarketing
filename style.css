@@ -3,129 +3,65 @@
 * { 
     box-sizing: border-box; 
     font-family: "Pretendard Variable", sans-serif;
-    -webkit-font-smoothing: antialiased;
 }
 
-:root { 
-    --primary: #ff6600; 
-    --secondary: #1e293b; 
-    --text: #475569; 
-}
+body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: #fff; }
 
-body, html { 
-    margin: 0; padding: 0; width: 100%; height: 100%; 
-    background-color: #ffffff; 
-}
-
-/* 슬라이드 컨테이너: 세로형 가이드북 최적화 */
 .slide-container {
-    width: 100%; 
-    height: 100vh; 
-    display: flex; 
-    flex-direction: column;
-    padding: 60px 25px 120px 25px; 
-    position: relative; 
-    overflow-x: hidden;
-    overflow-y: auto; /* 내용이 길어질 경우 스크롤 허용 */
+    width: 100%; height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; /* 가로 중앙 정렬 */
+    justify-content: center; /* 세로 중앙 정렬 */
+    text-align: center; /* 텍스트 중앙 정렬 */
+    padding: 40px 20px 100px 20px;
+    position: relative;
+    overflow: hidden;
 }
 
-/* [추가] 브랜드 로고 스타일 */
+/* 로고 박스 확실히 중앙으로 */
 .brand-logo {
+    width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
-    margin-top: -10px; /* 로고 위치를 살짝 위로 조정 */
-    width: 100%;
+    margin-bottom: 25px;
 }
 
 .brand-logo img {
-    height: 55px; /* 로고 크기 */
+    height: 50px;
     width: auto;
     object-fit: contain;
 }
 
-/* 1페이지 타이틀 레이아웃 */
-.title-layout { 
-    text-align: center; 
-    flex-grow: 1;
-    display: flex; 
-    flex-direction: column; 
-    justify-content: center; 
-    align-items: center;
-    padding-top: 0; /* 로고 여백을 고려하여 패딩 제거 */
+.title-layout {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 자식 요소 가로 중앙 */
 }
 
-.title-layout h1 { 
-    font-size: clamp(30px, 7.5vw, 40px); 
-    color: var(--secondary); 
-    margin-bottom: 20px; 
-    letter-spacing: -1.5px;
-    line-height: 1.35; /* 줄바꿈 간격 최적화 */
-    word-break: keep-all; 
+.title-layout h1 {
+    font-size: clamp(28px, 7vw, 38px);
+    color: #1e293b;
+    line-height: 1.35;
+    margin: 0 0 20px 0;
+    word-break: keep-all;
+    width: 100%; /* 제목 너비 확보 */
 }
 
-.title-layout .subtitle { 
-    font-size: 15px; 
-    color: var(--text); 
+.title-layout .subtitle {
+    font-size: 15px;
+    color: #475569;
     background: #f1f5f9;
     padding: 10px 20px;
     border-radius: 30px;
-    line-height: 1.4;
-    max-width: 90%;
-    word-break: keep-all;
+    display: inline-block; /* 내용만큼만 배경색 칠해지게 */
 }
 
-/* 하단 주황색 바 */
-.title-footer { 
-    position: absolute; 
-    bottom: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 80px; 
-    background-color: var(--primary); 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    color: white; 
-    z-index: 1;
+/* 하단 바 */
+.title-footer {
+    position: absolute; bottom: 0; left: 0;
+    width: 100%; height: 80px;
+    background-color: #ff6600;
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-weight: 700;
 }
-
-.title-footer span { 
-    font-weight: 700; 
-    font-size: 16px; 
-    letter-spacing: 0.5px; 
-}
-
-/* 일반 페이지 공통 스타일 */
-.slide-title { 
-    font-size: 26px; 
-    font-weight: 800; 
-    color: var(--secondary); 
-    margin-bottom: 25px; 
-    border-left: 6px solid var(--primary); 
-    padding-left: 15px; 
-    line-height: 1.2; 
-}
-
-.tiled-grid { 
-    display: grid; 
-    grid-template-columns: 1fr 1fr; 
-    gap: 12px; 
-}
-
-.two-column { 
-    display: flex;
-    flex-direction: column; 
-    gap: 20px;
-}
-
-.image-side { 
-    width: 100%;
-    height: 200px;
-    border-radius: 12px;
-}
-
-/* 배경 장식 blob (선택 사항) */
-.blob { position: absolute; width: 300px; height: 300px; background: radial-gradient(circle, rgba(255,102,0,0.05) 0%, rgba(255,102,0,0) 70%); border-radius: 50%; z-index: 0; }
-.blob-1 { top: -100px; right: -100px; }
