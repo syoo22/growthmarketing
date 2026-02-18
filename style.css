@@ -107,3 +107,97 @@ body, html {
     height: 200px;
     border-radius: 12px;
 }
+
+/* 세로형 인포그래픽 타임라인 */
+.infographic-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px 0;
+    position: relative;
+    overflow-y: auto; /* 내용이 길면 스크롤 */
+}
+
+/* 수직 점선 생성 */
+.infographic-timeline::before {
+    content: '';
+    position: absolute;
+    left: 21px;
+    top: 20px;
+    bottom: 20px;
+    width: 2px;
+    background: repeating-linear-gradient(to bottom, #cbd5e1 0, #cbd5e1 5px, transparent 5px, transparent 10px);
+    z-index: 0;
+}
+
+.info-step {
+    display: flex;
+    gap: 15px;
+    z-index: 1;
+}
+
+/* 아이콘 스타일 */
+.step-icon {
+    width: 44px;
+    height: 44px;
+    background: #ffffff;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+/* 카드 디자인 */
+.step-card {
+    background: #ffffff;
+    padding: 16px;
+    border-radius: 14px;
+    flex-grow: 1;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+}
+
+.card-header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 8px;
+}
+
+.step-tag {
+    font-size: 10px;
+    font-weight: 800;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.step-card h3 {
+    font-size: 17px;
+    margin: 2px 0 0 0;
+    color: var(--secondary);
+}
+
+.step-card p {
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.5;
+    margin: 0 0 10px 0;
+}
+
+/* 담당 팀 태그 */
+.team-tag {
+    font-size: 11px;
+    font-weight: 600;
+    color: #64748b;
+    background: #f1f5f9;
+    padding: 4px 10px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
