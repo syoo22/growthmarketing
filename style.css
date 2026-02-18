@@ -1,0 +1,54 @@
+/* style.css */
+* { box-sizing: border-box; }
+:root { 
+    --primary: #ff6600; 
+    --secondary: #1e293b; 
+    --text: #475569; 
+    --bg: #cbd5e1; 
+}
+
+body, html { 
+    margin: 0; padding: 0; width: 100%; height: 100%; 
+    overflow: hidden; background-color: var(--bg);
+    font-family: 'Lato', sans-serif;
+}
+
+.slide-container {
+    width: 1280px; height: 720px;
+    background-color: #ffffff; color: #1e293b;
+    margin: 0 auto; display: flex; flex-direction: column;
+    padding: 60px 80px; position: relative; overflow: hidden;
+}
+
+h1, h2, h3 { font-family: 'Poppins', sans-serif; margin: 0; }
+.slide-title { font-size: 42px; font-weight: 700; color: var(--secondary); margin-bottom: 40px; border-left: 8px solid var(--primary); padding-left: 20px; line-height: 1.2; }
+.content-area { flex-grow: 1; width: 100%; display: flex; flex-direction: column; justify-content: center; }
+
+/* 메인 타이틀 레이아웃 */
+.title-layout { text-align: center; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; }
+.title-layout h1 { font-size: 68px; color: var(--secondary); margin-bottom: 20px; z-index: 2; }
+.title-layout .subtitle { font-size: 28px; color: var(--text); font-weight: 400; z-index: 2; }
+.title-footer { 
+    position: absolute; bottom: 0; left: -80px; width: calc(100% + 160px); height: 100px; 
+    background-color: var(--primary); display: flex; align-items: center; 
+    padding: 0 80px; color: white; font-weight: 700; font-size: 24px; z-index: 1;
+}
+
+/* 그리드 및 타일 */
+.tiled-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; width: 100%; }
+.tile { background: #f8fafc; padding: 30px; border-radius: 12px; border-top: 4px solid var(--primary); height: 100%; }
+.tile i { font-size: 36px; color: var(--primary); margin-bottom: 20px; }
+
+/* 2컬럼 레이아웃 */
+.two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.image-side { border-radius: 20px; overflow: hidden; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); height: 400px; }
+.image-side img { width: 100%; height: 100%; object-fit: cover; }
+
+/* 테이블 */
+table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+th { background: #f8fafc; color: var(--secondary); padding: 20px; text-align: left; border-bottom: 3px solid var(--primary); }
+td { padding: 20px; border-bottom: 1px solid #e2e8f0; font-size: 18px; }
+
+/* 장식 요소 */
+.blob { position: absolute; width: 400px; height: 400px; background: rgba(255, 102, 0, 0.05); border-radius: 50%; z-index: 0; }
+.blob-1 { top: -150px; right: -150px; }
