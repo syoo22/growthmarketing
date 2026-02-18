@@ -28,12 +28,30 @@ body, html {
     padding: 50px 25px;
     box-shadow: 0 20px 50px rgba(0,0,0,0.5);
     text-align: center;
+    overflow: hidden; /* 로켓이 박스 안에서 날아오도록 설정 */
 }
 
+/* 로켓 발사 애니메이션 */
 .icon-wrap {
-    font-size: 40px;
+    font-size: 45px;
     color: #ff6600;
     margin-bottom: 20px;
+}
+
+.rocket-launch {
+    display: inline-block;
+    animation: launchEffect 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes launchEffect {
+    0% {
+        transform: translate(-100px, 100px) rotate(0deg);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 1;
+    }
 }
 
 .main-title {
