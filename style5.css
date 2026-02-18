@@ -20,7 +20,6 @@ body, html {
     flex-direction: column;
 }
 
-/* 4페이지와 동일한 왼쪽 정렬 제목 스타일 */
 .slide-title { 
     font-size: 24px; 
     font-weight: 800; 
@@ -32,7 +31,6 @@ body, html {
     text-align: left;
 }
 
-/* 상품 비교 그리드 레이아웃 */
 .product-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -40,16 +38,12 @@ body, html {
     margin-bottom: 25px;
 }
 
+/* 모든 상품 카드의 배경과 테두리를 동일하게 설정 */
 .product-card {
     background: #f8fafc;
     border: 1px solid #e2e8f0;
     border-radius: 12px;
     padding: 15px;
-}
-
-.product-card.highlight {
-    background: #fff7ed;
-    border: 1px solid #ff6600;
 }
 
 .card-header {
@@ -78,7 +72,6 @@ body, html {
     word-break: keep-all;
 }
 
-/* 하단 가이드 섹션 */
 .guide-section {
     display: flex;
     flex-direction: column;
@@ -116,7 +109,6 @@ body, html {
     color: #ff6600;
 }
 
-/* 하단 푸터 */
 .title-footer { 
     position: fixed;
     bottom: 0; 
