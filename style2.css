@@ -1,31 +1,112 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css");
 
-* { box-sizing: border-box; font-family: "Pretendard Variable", sans-serif; }
-body, html { margin: 0; padding: 0; background-color: #ffffff; }
+* { 
+    box-sizing: border-box; 
+    font-family: "Pretendard Variable", sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
 
-.slide-container { width: 100%; padding: 40px 25px 100px 25px; }
+body, html { 
+    margin: 0; padding: 0; width: 100%; 
+    background-color: #ffffff;
+}
+
+.slide-container {
+    width: 100%; 
+    min-height: 100vh;
+    padding: 40px 20px 100px 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
 
 .slide-title { 
-    font-size: 24px; font-weight: 800; color: #1e293b; 
-    margin-bottom: 30px; border-left: 6px solid #ff6600; padding-left: 15px; 
+    font-size: 24px; 
+    font-weight: 800; 
+    color: #1e293b; 
+    margin-bottom: 25px; 
+    border-left: 6px solid #ff6600; 
+    padding-left: 15px;
+    line-height: 1.2;
 }
 
-.infographic-timeline { display: flex; flex-direction: column; gap: 20px; }
-.info-step { display: flex; gap: 15px; }
-.step-icon { 
-    width: 35px; height: 35px; border: 2px solid #ff6600; color: #ff6600; 
-    border-radius: 50%; display: flex; align-items: center; justify-content: center; 
-    font-weight: 800; flex-shrink: 0;
+.infographic-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
-.step-card { 
-    background: #f8fafc; padding: 15px; border-radius: 12px; 
-    flex-grow: 1; border: 1px solid #e2e8f0; 
+
+.info-step {
+    display: flex;
+    gap: 12px;
 }
-.step-card h3 { font-size: 17px; margin: 0 0 5px 0; color: #1e293b; }
-.step-card p { font-size: 14px; margin: 0; color: #475569; line-height: 1.4; }
+
+.step-icon {
+    width: 32px;
+    height: 32px;
+    background: #fff;
+    border: 2px solid #ff6600;
+    color: #ff6600;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 5px;
+}
+
+.step-card {
+    background: #f8fafc;
+    padding: 16px;
+    border-radius: 12px;
+    flex-grow: 1;
+    border: 1px solid #e2e8f0;
+}
+
+.step-tag {
+    font-size: 10px;
+    font-weight: 800;
+    color: #ff6600;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.step-card h3 {
+    font-size: 17px;
+    margin: 0 0 10px 0;
+    color: #1e293b;
+    font-weight: 700;
+}
+
+.step-card p {
+    font-size: 13px;
+    line-height: 1.6;
+    margin: 0;
+    color: #475569;
+    word-break: keep-all;
+}
+
+.step-card b {
+    color: #334155;
+}
 
 .title-footer { 
-    position: fixed; bottom: 0; left: 0; width: 100%; height: 60px; 
-    background-color: #ff6600; display: flex; align-items: center; 
-    justify-content: center; color: white; 
+    position: fixed;
+    bottom: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 60px; 
+    background-color: #ff6600; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    color: white; 
+    z-index: 10;
+}
+
+.title-footer span { 
+    font-weight: 700; 
+    font-size: 14px; 
 }
