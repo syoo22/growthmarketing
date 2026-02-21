@@ -8,49 +8,60 @@
 
 body, html { 
     margin: 0; padding: 0; width: 100%; 
-    background-color: #ffffff;
+    background-color: #f1f5f9; /* 다른 페이지와 통일된 배경색 */
 }
 
 .slide-container {
     width: 100%; 
+    max-width: 600px;
+    margin: 0 auto;
     min-height: 100vh;
-    padding: 40px 20px 100px 20px;
+    padding: 50px 25px 120px 25px;
     position: relative;
     display: flex;
     flex-direction: column;
 }
 
 .slide-title { 
-    font-size: 24px; 
+    font-size: 26px; 
     font-weight: 800; 
     color: #1e293b; 
-    margin-bottom: 25px; 
+    margin-bottom: 30px; 
     border-left: 6px solid #ff6600; 
     padding-left: 15px;
     line-height: 1.2;
     text-align: left;
 }
 
+/* 상단 그리드 영역 */
 .product-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-bottom: 25px;
+    gap: 15px;
+    margin-bottom: 30px;
 }
 
-/* 모든 상품 카드의 배경과 테두리를 동일하게 설정 */
+/* 상단 상품 카드 스타일 및 호버 */
 .product-card {
-    background: #f8fafc;
+    background: #ffffff; /* 흰색 카드로 변경 */
     border: 1px solid #e2e8f0;
-    border-radius: 12px;
-    padding: 15px;
+    border-radius: 16px;
+    padding: 18px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    transition: all 0.3s ease;
+}
+
+.product-card:hover {
+    border-color: #ff6600;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(255, 102, 0, 0.1);
 }
 
 .card-header {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 800;
     color: #1e293b;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     display: flex;
     align-items: center;
 }
@@ -65,50 +76,64 @@ body, html {
 }
 
 .product-card p {
-    font-size: 12px;
-    line-height: 1.5;
+    font-size: 13px;
+    line-height: 1.6;
     color: #475569;
     margin: 0;
     word-break: keep-all;
 }
 
+/* 하단 가이드 섹션 영역 */
 .guide-section {
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
+/* 가이드 아이템 스타일 및 호버 */
 .guide-item {
     display: flex;
     gap: 15px;
-    background: #f1f5f9;
-    padding: 15px;
-    border-radius: 12px;
+    background: #ffffff; /* 연그레이에서 흰색 카드로 변경 */
+    padding: 20px;
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    transition: all 0.3s ease;
+}
+
+.guide-item:hover {
+    border-color: #ff6600;
+    transform: translateX(5px); /* 가이드 리스트는 오른쪽으로 살짝 이동하는 효과 */
+    box-shadow: 0 6px 15px rgba(255, 102, 0, 0.08);
 }
 
 .guide-icon {
     color: #ff6600;
-    font-size: 20px;
-    padding-top: 3px;
+    font-size: 22px;
+    padding-top: 2px;
 }
 
 .guide-text h3 {
-    font-size: 16px;
-    margin: 0 0 6px 0;
+    font-size: 17px;
+    margin: 0 0 8px 0;
     color: #1e293b;
+    font-weight: 800;
 }
 
 .guide-text p {
-    font-size: 13px;
-    line-height: 1.6;
+    font-size: 14px;
+    line-height: 1.7;
     margin: 0;
     color: #475569;
 }
 
 .guide-text b {
     color: #ff6600;
+    font-weight: 700;
 }
 
+/* 하단 푸터 통일 */
 .title-footer { 
     position: fixed;
     bottom: 0; 
@@ -126,4 +151,5 @@ body, html {
 .title-footer span { 
     font-weight: 700; 
     font-size: 14px; 
+    letter-spacing: 1px;
 }
