@@ -8,88 +8,116 @@
 
 body, html { 
     margin: 0; padding: 0; width: 100%; 
-    background-color: #ffffff;
+    background-color: #f1f5f9; /* 배경을 연한 그레이로 바꿔 카드를 돋보이게 함 */
 }
 
 .slide-container {
     width: 100%; 
+    max-width: 600px; /* 가독성을 위해 최대 너비 제한 */
+    margin: 0 auto;
     min-height: 100vh;
-    padding: 40px 20px 100px 20px;
+    padding: 50px 25px 120px 25px;
     position: relative;
     display: flex;
     flex-direction: column;
 }
 
 .slide-title { 
-    font-size: 24px; 
+    font-size: 26px; 
     font-weight: 800; 
     color: #1e293b; 
-    margin-bottom: 25px; 
+    margin-bottom: 40px; 
     border-left: 6px solid #ff6600; 
     padding-left: 15px;
     line-height: 1.2;
 }
 
+/* 타임라인 세로 연결선 추가 */
 .infographic-timeline {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 25px; /* 간격을 넓혀 답답함 해소 */
+    position: relative;
+}
+
+.infographic-timeline::before {
+    content: '';
+    position: absolute;
+    left: 18px; /* step-icon의 중앙 위치 */
+    top: 10px;
+    bottom: 10px;
+    width: 2px;
+    background: #cbd5e1; /* 연결선 색상 */
+    z-index: 0;
 }
 
 .info-step {
     display: flex;
-    gap: 12px;
+    gap: 20px;
+    position: relative;
+    z-index: 1;
 }
 
 .step-icon {
-    width: 32px;
-    height: 32px;
-    background: #fff;
-    border: 2px solid #ff6600;
-    color: #ff6600;
+    width: 38px; /* 크기 약간 확대 */
+    height: 38px;
+    background: #ff6600; /* 채우기 스타일로 변경하여 강조 */
+    border: 4px solid #f1f5f9; /* 배경색과 맞춘 보더로 공중에 뜬 효과 */
+    color: #ffffff;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 800;
-    font-size: 14px;
+    font-size: 15px;
     flex-shrink: 0;
-    margin-top: 5px;
+    box-shadow: 0 4px 10px rgba(255, 102, 0, 0.2);
 }
 
 .step-card {
-    background: #f8fafc;
-    padding: 16px;
-    border-radius: 12px;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 16px;
     flex-grow: 1;
     border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03); /* 은은한 그림자 추가 */
+    transition: all 0.3s ease;
+}
+
+/* 마우스를 올리거나 가독성을 위한 카드 강조 */
+.step-card:hover {
+    border-color: #ff6600;
+    transform: translateY(-2px);
 }
 
 .step-tag {
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 800;
     color: #ff6600;
     text-transform: uppercase;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
+    display: inline-block;
+    letter-spacing: 0.5px;
 }
 
 .step-card h3 {
-    font-size: 17px;
-    margin: 0 0 10px 0;
-    color: #1e293b;
-    font-weight: 700;
+    font-size: 18px;
+    margin: 0 0 12px 0;
+    color: #0f172a;
+    font-weight: 800;
 }
 
 .step-card p {
-    font-size: 13px;
-    line-height: 1.6;
+    font-size: 14px; /* 가독성을 위해 약간 키움 */
+    line-height: 1.7; /* 줄간격 확보 */
     margin: 0;
     color: #475569;
     word-break: keep-all;
 }
 
 .step-card b {
-    color: #334155;
+    color: #ff6600; /* 강조 텍스트 색상을 브랜드 컬러로 변경 */
+    font-weight: 700;
 }
 
 .title-footer { 
@@ -104,9 +132,11 @@ body, html {
     justify-content: center; 
     color: white; 
     z-index: 10;
+    box-shadow: 0 -4px 15px rgba(0,0,0,0.1);
 }
 
 .title-footer span { 
     font-weight: 700; 
     font-size: 14px; 
+    letter-spacing: 1px;
 }
