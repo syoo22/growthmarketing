@@ -3,141 +3,177 @@
 * { 
     box-sizing: border-box; 
     font-family: "Pretendard Variable", sans-serif;
+    -webkit-font-smoothing: antialiased;
 }
 
 body, html { 
     margin: 0; padding: 0; width: 100%; 
-    background-color: #ffffff;
+    background-color: #f1f5f9; /* 통일된 연그레이 배경 */
 }
 
 .slide-container {
     width: 100%; 
+    max-width: 600px;
+    margin: 0 auto;
     min-height: 100vh;
-    padding: 30px 15px 80px 15px;
+    padding: 50px 20px 100px 20px;
     display: flex;
     flex-direction: column;
 }
 
 .slide-title { 
-    font-size: 20px; 
+    font-size: 26px; 
     font-weight: 800; 
     color: #1e293b; 
-    margin-bottom: 15px; 
-    border-left: 5px solid #ff6600; 
-    padding-left: 12px;
+    margin-bottom: 30px; 
+    border-left: 6px solid #ff6600; 
+    padding-left: 15px;
+    line-height: 1.2;
 }
 
+/* 상단 인트로 섹션 */
 .intro-section {
-    background: #f1f5f9;
-    padding: 12px;
-    border-radius: 8px;
-    margin-bottom: 20px;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 16px;
+    margin-bottom: 25px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
 }
 
 .info-item {
-    font-size: 12px;
+    font-size: 13.5px;
     color: #475569;
-    line-height: 1.5;
-    margin-bottom: 4px;
+    line-height: 1.6;
+    margin-bottom: 6px;
 }
 
 .section-title {
-    font-size: 14px;
-    font-weight: 700;
-    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: 800;
+    margin-bottom: 12px;
     color: #1e293b;
+    display: flex;
+    align-items: center;
 }
 
+.section-title::after {
+    content: '';
+    flex-grow: 1;
+    height: 1px;
+    background: #e2e8f0;
+    margin-left: 10px;
+}
+
+/* 표 영역 최적화 */
 .table-wrapper {
+    background: white;
+    padding: 15px;
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
     overflow-x: auto;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
 }
 
 .utm-table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 11px;
+    font-size: 12px;
+    min-width: 400px;
 }
 
 .utm-table th {
     background: #f8fafc;
-    padding: 10px 8px;
+    padding: 12px 10px;
     text-align: left;
-    border-bottom: 2px solid #e2e8f0;
-    color: #64748b;
+    border-bottom: 2px solid #ff6600; /* 표 헤더 강조 */
+    color: #475569;
+    font-weight: 800;
 }
 
 .utm-table td {
-    padding: 10px 8px;
+    padding: 12px 10px;
     border-bottom: 1px solid #f1f5f9;
     color: #334155;
 }
 
 .highlight-row {
     background-color: #fffaf5;
-    color: #ff6600;
+    font-weight: 700;
 }
 
+/* 하단 규칙 박스 스택 */
 .rules-stack {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 15px;
 }
 
 .rules-box {
     background: #ffffff;
-    border-radius: 10px;
-    padding: 15px;
+    border-radius: 16px;
+    padding: 20px;
     border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
 }
 
+.rules-box:hover {
+    border-color: #ff6600;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(255, 102, 0, 0.1);
+}
+
+/* 멋사 전용 규칙 강조 */
 .lion-rules {
-    border: 1.5px solid #ff6600;
-    background: #fff7ed;
+    border: 2px solid #ff6600;
+    background: #fffefc;
 }
 
 .box-title {
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 800;
-    margin-bottom: 12px;
+    margin-bottom: 15px;
     color: #1e293b;
-}
-
-.rules-box ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .rules-box li {
-    font-size: 11.5px;
-    line-height: 1.6;
-    margin-bottom: 8px;
+    font-size: 13px;
+    line-height: 1.7;
+    margin-bottom: 10px;
     display: flex;
     align-items: flex-start;
-    gap: 8px;
+    gap: 10px;
     color: #475569;
 }
 
+/* 번호 아이콘 스타일 */
 .rules-box span {
     background: #64748b;
     color: white;
-    min-width: 16px;
-    height: 16px;
+    min-width: 18px;
+    height: 18px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 9px;
-    margin-top: 1px;
+    font-size: 10px;
+    margin-top: 2px;
+    flex-shrink: 0;
 }
 
+.lion-rules span { background: #ff6600; }
 .lion-rules b { color: #ff6600; }
 
+/* 푸터 통일 */
 .title-footer { 
     position: fixed;
-    bottom: 0; left: 0; width: 100%; height: 55px; 
+    bottom: 0; left: 0; width: 100%; height: 60px; 
     background-color: #ff6600; display: flex; 
     align-items: center; justify-content: center; color: white; 
+    z-index: 10;
 }
-.title-footer span { font-weight: 700; font-size: 13px; }
+.title-footer span { font-weight: 700; font-size: 14px; letter-spacing: 1px; }
