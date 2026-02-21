@@ -128,7 +128,7 @@ body, html {
 /* 카드 내부 로고 스타일 */
 .brand-logo-inner {
     text-align: center;
-    padding-top: 5px;    /* 카드 상단 여백 */
+    padding-top: 0px;    /* 카드 상단 여백 */
     margin-bottom: 10px;  /* 로고와 로켓 아이콘 사이 간격 */
 }
 
