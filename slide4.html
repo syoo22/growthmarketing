@@ -1,70 +1,143 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style4.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-</head>
-<body>
-    <div class="slide-container">
-        <h2 class="slide-title">그로스팀 R&R</h2>
-        
-        <div class="infographic-timeline">
-            <div class="info-step">
-                <div class="step-icon">D-10</div>
-                <div class="step-card">
-                    <div class="step-tag">Tracking & Infra</div>
-                    <h3>데이터 인프라 및 추적 세팅</h3>
-                    <p>
-                        • 뷰저블 등록 및 어드민 내 공유하기 설정<br>
-                        • UTM 시트 작성 및 채널별 파라미터 셋팅<br>
-                        • HRD-net 및 문의용 채널톡 링크 연동
-                    </p>
-                </div>
-            </div>
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css");
 
-            <div class="info-step">
-                <div class="step-icon">D-5</div>
-                <div class="step-card">
-                    <div class="step-tag">Audience & Contents</div>
-                    <h3>타겟 빌딩 및 광고 자산 준비</h3>
-                    <p>
-                        • 메타/구글 방문자·수강생 DB 유사 타겟 생성<br>
-                        • 빅인(bigin) 콘텐츠 팝업 및 알림톡 셋팅<br>
-                        • 부트텐트 등 버티컬 매체 강의 등록 및 T&D 작성
-                    </p>
-                </div>
-            </div>
+* { 
+    box-sizing: border-box; 
+    font-family: "Pretendard Variable", sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
 
-            <div class="info-step">
-                <div class="step-icon">D-2</div>
-                <div class="step-card">
-                    <div class="step-tag">Setup & QA</div>
-                    <h3>캠페인 셋팅 및 최종 점검</h3>
-                    <p>
-                        • 매체별 껍데기 캠페인 셋팅 및 최종 QA 리스트 작성<br>
-                        • <b>오픈 전 점검</b>: 사이트 이슈 실시간 모니터링 준비
-                    </p>
-                </div>
-            </div>
+body, html { 
+    margin: 0; padding: 0; width: 100%; 
+    background-color: #f1f5f9; /* 2,3페이지와 통일된 연그레이 배경 */
+}
 
-            <div class="info-step">
-                <div class="step-icon">LIVE</div>
-                <div class="step-card">
-                    <div class="step-tag">Operation</div>
-                    <h3>모객 시작 및 캠페인 최적화</h3>
-                    <p>
-                        • 캠페인 라이브 및 광고 체크리스트 점검<br>
-                        • 데일리 리포트 기반 전환 효율 분석 및 성과 점검
-                    </p>
-                </div>
-            </div>
-        </div>
+.slide-container {
+    width: 100%; 
+    max-width: 600px;
+    margin: 0 auto;
+    min-height: 100vh;
+    padding: 50px 25px 120px 25px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
 
-        <div class="title-footer">
-            <span>LIKELION GROWTH MARKETING TEAM</span>
-        </div>
-    </div>
-</body>
-</html>
+.slide-title { 
+    font-size: 26px; 
+    font-weight: 800; 
+    color: #1e293b; 
+    margin-bottom: 40px; 
+    border-left: 6px solid #ff6600; 
+    padding-left: 15px;
+    line-height: 1.2;
+}
+
+/* 타임라인 세로 연결선 */
+.infographic-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    position: relative;
+}
+
+.infographic-timeline::before {
+    content: '';
+    position: absolute;
+    left: 24px; /* step-icon 크기에 맞춘 중앙 정렬 */
+    top: 10px;
+    bottom: 10px;
+    width: 2px;
+    background: #cbd5e1;
+    z-index: 0;
+}
+
+.info-step {
+    display: flex;
+    gap: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* D-Day 아이콘 강조 */
+.step-icon {
+    width: 48px; /* D-10 등의 텍스트를 위해 살짝 키움 */
+    height: 48px;
+    background: #ff6600;
+    border: 4px solid #f1f5f9;
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 13px; /* D-10이 잘 보이도록 조정 */
+    flex-shrink: 0;
+    box-shadow: 0 4px 10px rgba(255, 102, 0, 0.2);
+}
+
+.step-card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 16px;
+    flex-grow: 1;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    transition: all 0.3s ease; /* 부드러운 호버 애니메이션 */
+}
+
+/* [요청사항] 마우스 호버 및 모바일 터치 시 주황색 테두리 */
+.step-card:hover {
+    border-color: #ff6600;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(255, 102, 0, 0.1);
+}
+
+.step-tag {
+    font-size: 11px;
+    font-weight: 800;
+    color: #ff6600;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    display: inline-block;
+    letter-spacing: 0.5px;
+}
+
+.step-card h3 {
+    font-size: 18px;
+    margin: 0 0 12px 0;
+    color: #0f172a;
+    font-weight: 800;
+}
+
+.step-card p {
+    font-size: 14px;
+    line-height: 1.7;
+    margin: 0;
+    color: #475569;
+    word-break: keep-all;
+}
+
+.step-card b {
+    color: #ff6600;
+    font-weight: 700;
+}
+
+.title-footer { 
+    position: fixed;
+    bottom: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 60px; 
+    background-color: #ff6600; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    color: white; 
+    z-index: 10;
+}
+
+.title-footer span { 
+    font-weight: 700; 
+    font-size: 14px; 
+    letter-spacing: 1px;
+}
