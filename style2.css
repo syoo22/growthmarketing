@@ -27,7 +27,7 @@ body, html { margin: 0; padding: 0; width: 100%; background-color: #1e293b; colo
 }
 
 .brand-logo-corner img {
-    height: 22px; /* 로고 크기 (적당히 키웠습니다) */
+    height: 30px; /* 로고 크기 (적당히 키웠습니다) */
     width: auto;
     display: block;
 }
