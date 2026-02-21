@@ -129,11 +129,11 @@ body, html {
 .brand-logo-inner {
     text-align: center;
     padding-top: 10px;    /* 카드 상단 여백 */
-    margin-bottom: 20px;  /* 로고와 로켓 아이콘 사이 간격 */
+    margin-bottom: 10px;  /* 로고와 로켓 아이콘 사이 간격 */
 }
 
 .brand-logo-inner img {
-    height: 50px;         /* 로고 크기를 기존보다 키움 (원하는 대로 조절 가능) */
+    height: 70px;         /* 로고 크기를 기존보다 키움 (원하는 대로 조절 가능) */
     width: auto;
     display: inline-block;
 }
