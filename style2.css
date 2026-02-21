@@ -1,38 +1,49 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css");
 
-* { box-sizing: border-box; font-family: "Pretendard Variable", sans-serif; }
-body, html { margin: 0; padding: 0; width: 100%; background-color: #1e293b; color: #1e293b; }
+* { 
+    box-sizing: border-box; 
+    font-family: "Pretendard Variable", sans-serif; 
+}
+
+body, html { 
+    margin: 0; padding: 0; width: 100%; 
+    background-color: #f1f5f9; /* 3페이지와 통일한 배경색 */
+}
 
 .slide-container {
     width: 100%; min-height: 100vh;
-    padding: 40px 20px 80px 20px;
+    padding: 40px 20px 100px 20px;
     display: flex; justify-content: center; align-items: center;
 }
 
 .contents-card {
     background: #ffffff;
-    width: 100%; max-width: 450px;
+    width: 100%; max-width: 480px;
     border-radius: 35px;
     padding: 40px 30px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-    /* [수정] 로고 배치의 기준점이 되도록 설정 */
-    position: relative; 
+    box-shadow: 0 15px 35px rgba(0,0,0,0.05); /* 은은한 그림자로 변경 */
+    position: relative;
+    border: 1px solid #e2e8f0;
 }
 
-/* [추가] 우측 상단 로고 스타일 */
+/* 우측 상단 로고 */
 .brand-logo-corner {
     position: absolute;
-    top: 35px;    /* 위에서부터의 거리 */
-    right: 30px;  /* 오른쪽에서부터의 거리 */
+    top: 35px;
+    right: 30px;
 }
 
 .brand-logo-corner img {
-    height: 30px; /* 로고 크기 (적당히 키웠습니다) */
+    height: 22px;
     width: auto;
     display: block;
 }
 
-.card-header { margin-bottom: 25px; border-bottom: 2px solid #f8fafc; padding-bottom: 15px; }
+.card-header { 
+    margin-bottom: 25px; 
+    border-bottom: 2px solid #f1f5f9; 
+    padding-bottom: 15px; 
+}
 
 .step-tag {
     font-size: 10px; font-weight: 800; color: #ff6600;
@@ -40,15 +51,26 @@ body, html { margin: 0; padding: 0; width: 100%; background-color: #1e293b; colo
     letter-spacing: 1px;
 }
 
-.card-title { font-size: 22px; font-weight: 800; margin: 10px 0 0 0; }
+.card-title { font-size: 24px; font-weight: 800; margin: 10px 0 0 0; color: #1e293b; }
 
 .contents-list { list-style: none; padding: 0; margin: 0; }
 
+/* [중요] 리스트 항목 스타일 및 호버 효과 */
 .contents-list li {
     display: flex; align-items: flex-start;
-    padding: 12px 10px;
-    border-radius: 15px;
-    transition: background 0.2s;
+    padding: 15px;
+    border-radius: 18px;
+    border: 1px solid transparent; /* 기본 상태는 투명 테두리 */
+    transition: all 0.3s ease; /* 부드러운 변화를 위한 코드 */
+    margin-bottom: 4px;
+}
+
+/* PC 마우스 호버 & 모바일 터치 시 반응 */
+.contents-list li:hover {
+    background: #fff; /* 배경색 유지 혹은 살짝 변경 */
+    border-color: #ff6600; /* 주황색 테두리 발생 */
+    transform: translateX(5px); /* 우측으로 살짝 이동하는 애니메이션 */
+    box-shadow: 0 4px 12px rgba(255, 102, 0, 0.08); /* 미세한 주황색 그림자 */
 }
 
 .contents-list .num {
@@ -64,8 +86,9 @@ body, html { margin: 0; padding: 0; width: 100%; background-color: #1e293b; colo
 .sub-desc { font-size: 12px; font-weight: 500; color: #94a3b8; margin: 2px 0 0 0; }
 
 .title-footer { 
-    position: fixed; bottom: 0; left: 0; width: 100%; height: 55px; 
+    position: fixed; bottom: 0; left: 0; width: 100%; height: 60px; 
     background-color: #ff6600; display: flex; 
     align-items: center; justify-content: center; color: white; 
+    z-index: 10;
 }
-.title-footer span { font-weight: 700; font-size: 12px; letter-spacing: 1px; }
+.title-footer span { font-weight: 700; font-size: 14px; letter-spacing: 1px; }
