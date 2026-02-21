@@ -1,116 +1,263 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css");
 
+
+
 * { 
+
     box-sizing: border-box; 
+
     font-family: "Pretendard Variable", sans-serif;
+
 }
+
+
 
 body, html { 
+
     margin: 0; padding: 0; width: 100%; 
-    background-color: #1e293b; /* 남색 배경 유지 */
+
+    background-color: #1e293b; 
+
 }
+
+
 
 .slide-container {
+
     width: 100%; 
+
     min-height: 100vh;
+
     padding: 40px 20px 80px 20px;
+
     display: flex;
+
     flex-direction: column;
+
     justify-content: center;
+
     align-items: center;
+
 }
 
-/* [인터랙티브 핵심] 메인 컨텐츠 카드 */
+
+
 .final-content {
-    background: #ffffff; /* 흰색 배경 유지 */
+
+    background: #ffffff;
+
     width: 100%;
+
     max-width: 420px;
-    border-radius: 35px; /* 조금 더 둥글게 다듬음 */
+
+    border-radius: 30px;
+
     padding: 50px 25px;
+
     box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+
     text-align: center;
-    overflow: hidden;
-    
-    /* 변화를 부드럽게 만들기 위한 속성 */
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    border: 2px solid transparent;
+
+    overflow: hidden; /* 로켓이 박스 안에서 날아오도록 설정 */
+
 }
 
-/* 마우스 호버 및 터치 시 반응 */
-.final-content:hover {
-    transform: translateY(-12px); /* 위로 살짝 띄우기 */
-    box-shadow: 0 30px 60px rgba(0,0,0,0.6); /* 그림자 깊이 추가 */
-    border-color: #ff6600; /* 주황색 테두리로 포인트 */
-}
 
-/* 로켓 아이콘 */
+
+/* 로켓 발사 애니메이션 */
+
 .icon-wrap {
+
     font-size: 45px;
+
     color: #ff6600;
+
     margin-bottom: 20px;
-    transition: transform 0.3s ease;
+
 }
 
-/* 카드 호버 시 로켓도 같이 미세하게 흔들리는 효과 */
-.final-content:hover .icon-wrap {
-    transform: scale(1.1) rotate(5deg);
-}
+
 
 .rocket-launch {
+
     display: inline-block;
+
     animation: launchEffect 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+
 }
+
+
 
 @keyframes launchEffect {
-    0% { transform: translate(-100px, 100px) rotate(0deg); opacity: 0; }
-    100% { transform: translate(0, 0) rotate(0deg); opacity: 1; }
+
+    0% {
+
+        transform: translate(-100px, 100px) rotate(0deg);
+
+        opacity: 0;
+
+    }
+
+    100% {
+
+        transform: translate(0, 0) rotate(0deg);
+
+        opacity: 1;
+
+    }
+
 }
+
+
 
 .main-title {
-    font-size: 24px; font-weight: 800; color: #1e293b;
-    line-height: 1.4; margin-bottom: 40px; word-break: keep-all;
+
+    font-size: 24px;
+
+    font-weight: 800;
+
+    color: #1e293b;
+
+    line-height: 1.4;
+
+    margin-bottom: 40px;
+
+    word-break: keep-all;
+
 }
 
-.principles-list { text-align: left; margin-bottom: 40px; }
 
-/* [인터랙티브] 리스트 항목 호버 효과 */
+
+.principles-list {
+
+    text-align: left;
+
+    margin-bottom: 40px;
+
+}
+
+
+
 .principle-item {
+
     margin-bottom: 22px;
-    padding: 10px;
-    border-radius: 12px;
-    transition: background 0.3s ease;
+
 }
 
-.principle-item:hover {
-    background: #f8fafc; /* 리스트 위에 마우스 올리면 살짝 밝아짐 */
+
+
+.item-header {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 4px;
+
 }
 
-.item-header { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
+
 
 .num {
-    font-size: 12px; font-weight: 800; color: #ff6600;
-    background: #fff0e6; padding: 2px 6px; border-radius: 4px;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    color: #ff6600;
+
+    background: #fff0e6;
+
+    padding: 2px 6px;
+
+    border-radius: 4px;
+
 }
 
-.sub-title { font-size: 14.5px; font-weight: 700; color: #1e293b; }
+
+
+.sub-title {
+
+    font-size: 14.5px;
+
+    font-weight: 700;
+
+    color: #1e293b;
+
+}
+
+
 
 .principle-item p {
-    margin: 0; font-size: 12.5px; color: #64748b;
-    line-height: 1.6; padding-left: 38px;
+
+    margin: 0;
+
+    font-size: 12.5px;
+
+    color: #64748b;
+
+    line-height: 1.6;
+
+    padding-left: 38px;
+
 }
 
-.welcome-section { border-top: 1px dashed #e2e8f0; padding-top: 30px; }
+
+
+.welcome-section {
+
+    border-top: 1px dashed #e2e8f0;
+
+    padding-top: 30px;
+
+}
+
+
 
 .eng-msg {
-    font-size: 14px; font-weight: 800; color: #ff6600;
-    margin: 0 0 10px 0; letter-spacing: 1px;
+
+    font-size: 14px;
+
+    font-weight: 800;
+
+    color: #ff6600;
+
+    margin: 0 0 10px 0;
+
+    letter-spacing: 1px;
+
 }
 
-.kor-msg { font-size: 13px; color: #475569; line-height: 1.6; margin: 0; font-weight: 500; }
+
+
+.kor-msg {
+
+    font-size: 13px;
+
+    color: #475569;
+
+    line-height: 1.6;
+
+    margin: 0;
+
+    font-weight: 500;
+
+}
+
+
 
 .title-footer { 
-    position: fixed; bottom: 0; left: 0; width: 100%; height: 55px; 
+
+    position: fixed;
+
+    bottom: 0; left: 0; width: 100%; height: 55px; 
+
     background-color: #ff6600; display: flex; 
+
     align-items: center; justify-content: center; color: white; 
+
 }
+
 .title-footer span { font-weight: 700; font-size: 13px; letter-spacing: 1px; }
