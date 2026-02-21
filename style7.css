@@ -8,85 +8,109 @@
 
 body, html { 
     margin: 0; padding: 0; width: 100%; 
-    background-color: #ffffff;
+    background-color: #f1f5f9; /* 통일된 연그레이 배경 */
 }
 
 .slide-container {
     width: 100%; 
+    max-width: 600px;
+    margin: 0 auto;
     min-height: 100vh;
-    padding: 40px 20px 100px 20px;
+    padding: 50px 25px 120px 25px;
     position: relative;
     display: flex;
     flex-direction: column;
 }
 
 .slide-title { 
-    font-size: 24px; 
+    font-size: 26px; 
     font-weight: 800; 
     color: #1e293b; 
-    margin-bottom: 25px; 
+    margin-bottom: 30px; 
     border-left: 6px solid #ff6600; 
     padding-left: 15px;
     line-height: 1.2;
     text-align: left;
 }
 
+/* 상단 타겟 그리드 */
 .target-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    margin-bottom: 20px;
+    gap: 12px;
+    margin-bottom: 30px;
 }
 
 .target-card {
-    background: #f8fafc;
+    background: #ffffff; /* 흰색 카드로 변경 */
     border: 1px solid #e2e8f0;
-    border-radius: 12px;
-    padding: 12px;
+    border-radius: 16px;
+    padding: 15px;
     text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    transition: all 0.3s ease;
+}
+
+.target-card:hover {
+    border-color: #ff6600;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(255, 102, 0, 0.1);
 }
 
 .target-tag {
-    font-size: 9px;
+    font-size: 10px;
     font-weight: 800;
     color: #ff6600;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
 }
 
 .target-card h3 {
-    font-size: 15px;
+    font-size: 16px;
     margin: 0 0 8px 0;
     color: #1e293b;
+    font-weight: 800;
 }
 
 .target-card p {
-    font-size: 11px;
+    font-size: 12px;
     line-height: 1.5;
     color: #475569;
     margin: 0;
+    word-break: keep-all;
 }
 
 .target-card b {
     color: #ff6600;
 }
 
+/* 제외 섹션 스타일 */
 .exclusion-section {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .section-label {
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 900;
     color: #94a3b8;
-    margin-bottom: 6px;
+    margin-bottom: 10px;
     letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 .exclusion-box {
-    background: #f1f5f9;
-    border-radius: 12px;
-    padding: 15px;
-    border-left: 5px solid #64748b;
+    background: #ffffff; /* 배경을 흰색으로 변경 */
+    border-radius: 16px;
+    padding: 20px;
+    border: 1px solid #e2e8f0;
+    border-left: 6px solid #64748b; /* 제외 느낌을 주는 다크그레이 포인트 */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    transition: all 0.3s ease;
+}
+
+.exclusion-box:hover {
+    border-color: #64748b; /* 호버 시 포인트 컬러 강조 */
+    transform: translateX(5px);
 }
 
 .exclusion-header {
@@ -94,53 +118,54 @@ body, html {
     align-items: center;
     gap: 8px;
     font-weight: 800;
-    font-size: 15px;
+    font-size: 16px;
     color: #1e293b;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
 }
 
 .exclusion-header i { color: #ef4444; }
 
 .exclusion-box p {
-    font-size: 12.5px;
+    font-size: 13.5px;
     color: #475569;
-    margin: 0 0 10px 0;
+    margin: 0 0 15px 0;
 }
 
 .exclusion-usage {
-    font-size: 12px;
-    background: #ffffff;
-    padding: 10px;
-    border-radius: 8px;
-    line-height: 1.6;
+    font-size: 13px;
+    background: #f8fafc; /* 내부 박스는 살짝 어둡게 */
+    padding: 12px;
+    border-radius: 10px;
+    line-height: 1.7;
     color: #334155;
+    border: 1px dashed #cbd5e1;
 }
 
-.exclusion-usage b { color: #ff6600; }
-.exclusion-usage span { 
-    font-weight: 700; 
-    text-decoration: underline;
-    text-underline-offset: 2px;
-}
-
+/* 하단 최적화 그리드 */
 .optimization-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 12px;
+    gap: 15px;
 }
 
 .opt-box {
-    background: #fff7ed;
-    padding: 12px;
-    border-radius: 10px;
+    background: #fff7ed; /* 따뜻한 느낌 유지 */
+    padding: 15px;
+    border-radius: 12px;
     border: 1px solid #fed7aa;
+    transition: all 0.3s ease;
+}
+
+.opt-box:hover {
+    border-color: #ff6600;
+    background: #ffffff;
 }
 
 .opt-header {
-    font-weight: 700;
-    font-size: 13px;
+    font-weight: 800;
+    font-size: 14px;
     color: #1e293b;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
     display: flex;
     align-items: center;
     gap: 6px;
@@ -149,15 +174,18 @@ body, html {
 .opt-header i { color: #ff6600; }
 
 .opt-box p {
-    font-size: 11px;
+    font-size: 12px;
     margin: 0;
     color: #475569;
+    line-height: 1.6;
 }
 
+/* 하단 푸터 통일 */
 .title-footer { 
     position: fixed;
     bottom: 0; left: 0; width: 100%; height: 60px; 
     background-color: #ff6600; display: flex; 
     align-items: center; justify-content: center; color: white; 
+    z-index: 10;
 }
-.title-footer span { font-weight: 700; font-size: 14px; }
+.title-footer span { font-weight: 700; font-size: 14px; letter-spacing: 1px; }
