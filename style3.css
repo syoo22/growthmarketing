@@ -1,10 +1,14 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css");
 
-* { box-sizing: border-box; font-family: "Pretendard Variable", sans-serif; }
+* { 
+    box-sizing: border-box; 
+    font-family: "Pretendard Variable", sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
 
 body, html { 
     margin: 0; padding: 0; width: 100%; 
-    background-color: #f1f5f9; 
+    background-color: #f1f5f9; /* 카드 부각을 위한 연그레이 배경 */
 }
 
 .slide-container {
@@ -12,75 +16,134 @@ body, html {
     max-width: 600px;
     margin: 0 auto;
     min-height: 100vh;
-    padding: 50px 20px 100px 20px;
+    padding: 50px 25px 120px 25px;
+    position: relative;
     display: flex;
     flex-direction: column;
 }
 
 .slide-title { 
-    font-size: 24px; font-weight: 800; color: #1e293b; 
-    margin-bottom: 30px; border-left: 6px solid #ff6600; 
-    padding-left: 15px; line-height: 1.2;
+    font-size: 26px; 
+    font-weight: 800; 
+    color: #1e293b; 
+    margin-bottom: 40px; 
+    border-left: 6px solid #ff6600; 
+    padding-left: 15px;
+    line-height: 1.2;
 }
 
-.accordion-container { display: flex; flex-direction: column; gap: 12px; }
+/* 아코디언 컨테이너 */
+.accordion-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* 카드 사이 간격 */
+}
 
-.acc-input { display: none; }
+/* 체크박스 숨김 */
+.acc-input {
+    display: none;
+}
 
+/* 아코디언 카드 기본 스타일 */
 .step-card {
     display: block;
     background: #ffffff;
-    padding: 18px 20px;
-    border-radius: 16px;
+    padding: 22px;
+    border-radius: 20px;
     border: 1px solid #e2e8f0;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
 }
 
-.card-header { display: flex; justify-content: space-between; align-items: center; }
-.step-info { display: flex; align-items: center; gap: 10px; }
+/* 카드 호버 효과 */
+.step-card:hover {
+    border-color: #ff6600;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 102, 0, 0.08);
+}
+
+/* 카드 헤더 (제목+화살표) */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.step-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
 
 .step-badge {
-    font-size: 10px; font-weight: 800; color: #ff6600;
-    background: #fff0e6; padding: 3px 7px; border-radius: 4px;
+    font-size: 11px;
+    font-weight: 800;
+    color: #ff6600;
+    background: #fff0e6;
+    padding: 4px 9px;
+    border-radius: 6px;
+    text-transform: uppercase;
 }
 
-.card-header h3 { font-size: 16px; margin: 0; color: #1e293b; font-weight: 700; }
+.card-header h3 {
+    font-size: 18px;
+    margin: 0;
+    color: #0f172a;
+    font-weight: 800;
+}
 
 .arrow-icon {
-    font-size: 12px; color: #cbd5e1;
-    transition: transform 0.3s ease;
+    font-size: 14px;
+    color: #cbd5e1;
+    transition: transform 0.4s ease;
 }
 
-/* 펼쳐지는 내용 */
+/* [핵심] 펼쳐지는 내용 영역 */
 .card-content {
-    max-height: 0;
+    max-height: 0; /* 닫혀있을 때 높이 0 */
     overflow: hidden;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
 }
 
 .team-info {
-    font-size: 12px; color: #94a3b8;
-    padding: 15px 0 10px 0; margin-top: 15px;
-    border-top: 1px solid #f1f5f9;
+    font-size: 13px;
+    color: #94a3b8;
+    padding: 20px 0 12px 0;
+    margin-top: 20px;
+    border-top: 1px dashed #e2e8f0;
 }
-.team-info b { color: #ff6600; }
 
-.process-details { list-style: none; padding: 0; margin: 0; }
+.team-info b {
+    color: #ff6600;
+    font-weight: 700;
+}
+
+.process-details {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
 .process-details li {
-    font-size: 13.5px; color: #475569;
-    line-height: 1.6; margin-bottom: 6px;
+    font-size: 14.5px;
+    color: #475569;
+    line-height: 1.8;
+    margin-bottom: 8px;
+    word-break: keep-all;
 }
 
-/* 활성화 상태 (클릭 시) */
+/* [핵심 로직] 체크박스 활성화 시 스타일 변경 */
 .acc-input:checked + .step-card {
     border-color: #ff6600;
-    box-shadow: 0 10px 20px rgba(255, 102, 0, 0.08);
+    background: #ffffff;
 }
 
 .acc-input:checked + .step-card .card-content {
-    max-height: 350px; /* 내용에 따라 조절 가능 */
+    max-height: 400px; /* 충분한 높이 확보 */
+    opacity: 1;
+    margin-bottom: 10px;
 }
 
 .acc-input:checked + .step-card .arrow-icon {
@@ -88,10 +151,24 @@ body, html {
     color: #ff6600;
 }
 
-/* 푸터 */
+/* 하단 푸터 */
 .title-footer { 
-    position: fixed; bottom: 0; left: 0; width: 100%; height: 60px; 
-    background-color: #ff6600; display: flex; 
-    align-items: center; justify-content: center; color: white; 
+    position: fixed;
+    bottom: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 60px; 
+    background-color: #ff6600; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    color: white; 
+    z-index: 10;
+    box-shadow: 0 -4px 15px rgba(0,0,0,0.1);
 }
-.title-footer span { font-weight: 700; font-size: 14px; }
+
+.title-footer span { 
+    font-weight: 700; 
+    font-size: 14px; 
+    letter-spacing: 1px;
+}
