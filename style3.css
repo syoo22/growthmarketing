@@ -8,7 +8,7 @@
 
 body, html { 
     margin: 0; padding: 0; width: 100%; 
-    background-color: #f1f5f9; /* 카드 부각을 위한 연그레이 배경 */
+    background-color: #f1f5f9; 
 }
 
 .slide-container {
@@ -32,19 +32,16 @@ body, html {
     line-height: 1.2;
 }
 
-/* 아코디언 컨테이너 */
 .accordion-container {
     display: flex;
     flex-direction: column;
-    gap: 15px; /* 카드 사이 간격 */
+    gap: 15px;
 }
 
-/* 체크박스 숨김 */
 .acc-input {
     display: none;
 }
 
-/* 아코디언 카드 기본 스타일 */
 .step-card {
     display: block;
     background: #ffffff;
@@ -56,14 +53,12 @@ body, html {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
 }
 
-/* 카드 호버 효과 */
 .step-card:hover {
     border-color: #ff6600;
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(255, 102, 0, 0.08);
 }
 
-/* 카드 헤더 (제목+화살표) */
 .card-header {
     display: flex;
     justify-content: space-between;
@@ -73,17 +68,39 @@ body, html {
 .step-info {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 15px;
 }
 
-.step-badge {
-    font-size: 11px;
-    font-weight: 800;
+/* 🚀 [수정] 01, 02 숫자 아이콘 디자인 강화 */
+.step-icon {
+    width: 46px;
+    height: 46px;
+    background: linear-gradient(135deg, #ff8c00, #ff6600); /* 그라데이션 적용 */
+    color: #ffffff;
+    border-radius: 14px; /* 둥근 사각형 느낌 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 19px;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(255, 102, 0, 0.25);
+    font-family: 'Arial Black', sans-serif; /* 기하학적인 폰트 느낌 */
+}
+
+/* 🚀 [수정] 영문 태그(Preparation 등) 디자인 강화 */
+.step-tag {
+    font-size: 10px;
+    font-weight: 900;
     color: #ff6600;
-    background: #fff0e6;
-    padding: 4px 9px;
-    border-radius: 6px;
     text-transform: uppercase;
+    margin-bottom: 4px;
+    display: inline-block;
+    letter-spacing: 1.5px; /* 자간을 넓혀 세련된 느낌 */
+    background: #fff0e6;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-style: italic; /* 약간의 기울임으로 포인트 */
 }
 
 .card-header h3 {
@@ -99,12 +116,17 @@ body, html {
     transition: transform 0.4s ease;
 }
 
-/* [핵심] 펼쳐지는 내용 영역 */
 .card-content {
-    max-height: 0; /* 닫혀있을 때 높이 0 */
+    max-height: 0;
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 0;
+}
+
+/* 열렸을 때 숫자 아이콘 색상 반전 효과 추가 */
+.acc-input:checked + .step-card .step-icon {
+    background: #1e293b;
+    box-shadow: 0 4px 12px rgba(30, 41, 59, 0.2);
 }
 
 .team-info {
@@ -120,28 +142,19 @@ body, html {
     font-weight: 700;
 }
 
-.process-details {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.process-details li {
+.content-inner p { /* p 태그 스타일 유지 */
     font-size: 14.5px;
     color: #475569;
     line-height: 1.8;
-    margin-bottom: 8px;
-    word-break: keep-all;
+    margin: 0 0 8px 0;
 }
 
-/* [핵심 로직] 체크박스 활성화 시 스타일 변경 */
 .acc-input:checked + .step-card {
     border-color: #ff6600;
-    background: #ffffff;
 }
 
 .acc-input:checked + .step-card .card-content {
-    max-height: 400px; /* 충분한 높이 확보 */
+    max-height: 400px;
     opacity: 1;
     margin-bottom: 10px;
 }
@@ -151,7 +164,6 @@ body, html {
     color: #ff6600;
 }
 
-/* 하단 푸터 */
 .title-footer { 
     position: fixed;
     bottom: 0; 
