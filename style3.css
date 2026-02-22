@@ -35,7 +35,7 @@ body, html {
 .accordion-container {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 12px;
 }
 
 .acc-input {
@@ -45,18 +45,12 @@ body, html {
 .step-card {
     display: block;
     background: #ffffff;
-    padding: 18px 22px; 
-    border-radius: 20px;
+    padding: 18px 20px; 
+    border-radius: 16px;
     border: 1px solid #e2e8f0;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-}
-
-.step-card:hover {
-    border-color: #ff6600;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(255, 102, 0, 0.08);
+    transition: all 0.25s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
 }
 
 .card-header {
@@ -68,79 +62,86 @@ body, html {
 .step-info {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 12px;
 }
 
-/* 🚀 [수정] 숫자 아이콘: 주황색 원형 및 사이즈 축소 */
+/* 🚀 [수정] 2페이지와 동일한 스타일: 배경 없는 주황색 숫자 */
 .step-icon {
-    width: 36px;
-    height: 36px;
-    background: #ff6600;
-    color: #ffffff;
-    border-radius: 50%;
+    width: auto;
+    height: auto;
+    background: transparent; /* 배경 제거 */
+    color: #ff6600; /* 주황색 글씨만 유지 */
+    border-radius: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 800;
-    font-size: 15px;
+    font-size: 20px; /* 2페이지 숫자와 유사한 크기 */
     flex-shrink: 0;
-    box-shadow: 0 3px 8px rgba(255, 102, 0, 0.2);
-    font-family: 'Pretendard', sans-serif;
+    box-shadow: none; /* 그림자 제거 */
 }
 
-/* 🚀 [수정] 영문 태그: 배경 제거, 기울임 해제, 주황색 텍스트만 유지 */
+/* 🚀 영문 태그: 배경 없는 미니멀 스타일 */
 .step-tag {
-    font-size: 10px; /* 가독성을 위해 소폭 조정 */
+    font-size: 9px;
     font-weight: 800;
-    color: #ff6600; /* 주황색 텍스트 유지 */
+    color: #ff6600;
     text-transform: uppercase;
+    letter-spacing: 1px;
     margin-bottom: 2px;
     display: inline-block;
-    letter-spacing: 1.2px;
-    background: transparent; /* 배경색 제거 */
-    padding: 0; /* 배경이 없으므로 패딩 제거 */
-    border-radius: 0;
-    font-style: normal; /* 기울임 해제 */
 }
 
-.card-header h3 {
+.header-text h3 {
     font-size: 17px;
     margin: 0;
     color: #0f172a;
-    font-weight: 800;
-}
-
-.arrow-icon {
-    font-size: 13px;
-    color: #cbd5e1;
-    transition: transform 0.4s ease;
-}
-
-.card-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    opacity: 0;
-}
-
-.acc-input:checked + .step-card .step-icon {
-    background: #1e293b;
-    box-shadow: 0 3px 8px rgba(30, 41, 59, 0.2);
-}
-
-.team-info {
-    font-size: 13px;
-    color: #475569;
-    padding: 15px 0 10px 0;
-    margin-top: 15px;
-    border-top: 1px dashed #e2e8f0;
-}
-
-.team-info b {
-    color: #ff6600;
     font-weight: 700;
 }
 
+.arrow-icon {
+    font-size: 12px;
+    color: #cbd5e1;
+    transition: transform 0.3s ease;
+}
+
+/* 🚀 [수정] 본문 영역: 4페이지와 동일한 크기 및 형식 */
+.card-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease-out;
+    opacity: 0;
+}
+
+.content-inner {
+    padding-top: 15px;
+    margin-top: 15px;
+    border-top: 1px solid #f1f5f9;
+}
+
+.content-inner p {
+    font-size: 14px; /* 4페이지와 동일하게 축소 */
+    color: #475569;
+    line-height: 1.7;
+    margin: 0 0 6px 0;
+    word-break: keep-all;
+}
+
+.content-inner b {
+    color: #1e293b;
+    font-weight: 700;
+}
+
+/* 팀 정보 섹션 */
+.team-info {
+    font-size: 13px;
+    color: #94a3b8;
+    padding-top: 12px;
+    margin-top: 12px;
+    border-top: 1px dashed #e2e8f0;
+}
+
+/* ✅ 체크 시 상태 변화 */
 .acc-input:checked + .step-card {
     border-color: #ff6600;
 }
@@ -148,7 +149,6 @@ body, html {
 .acc-input:checked + .step-card .card-content {
     max-height: 500px;
     opacity: 1;
-    margin-bottom: 10px;
 }
 
 .acc-input:checked + .step-card .arrow-icon {
@@ -156,6 +156,7 @@ body, html {
     color: #ff6600;
 }
 
+/* 푸터 */
 .title-footer { 
     position: fixed;
     bottom: 0; 
