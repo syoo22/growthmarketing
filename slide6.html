@@ -1,52 +1,91 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>매체 운영 가이드: Google Ads</title>
     <link rel="stylesheet" href="style6.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
     <div class="slide-container">
-        <h2 class="slide-title">매체 운영 가이드: Google Ads</h2>
+        <h2 class="slide-title">매체 운영 가이드<br>Google Ads 주요 상품</h2>
         
-        <div class="product-grid">
-            <div class="product-card">
-                <div class="card-header">디스플레이</div>
-                <p>구글 제휴 사이트(뉴스, 블로그 등)에 광고 노출</p>
-            </div>
-            <div class="product-card">
-                <div class="card-header">디맨드젠</div>
-                <p>유튜브 영상 지면 노출 위주의 관심 유도</p>
-            </div>
-            <div class="product-card">
-                <div class="card-header">검색광고</div>
-                <p>구글 검색 시 광고 노출로 고관여 타겟 확보</p>
-            </div>
-            <div class="product-card"> <div class="card-header">실적최대화</div>
-                <p>디스플레이 + 유튜브 + 검색 전방위 커버</p>
-            </div>
-        </div>
-
-        <div class="guide-section">
-            <div class="guide-item">
-                <div class="guide-icon"><i class="fas fa-exclamation-triangle"></i></div>
-                <div class="guide-text">
-                    <h3>실적최대화(PMax) 주의사항</h3>
-                    <p>자동 노출 구조로 인해 매체 비중 선택 및 타겟팅 제외가 불가함</p>
+        <div class="accordion-container">
+            <input type="checkbox" id="g_step01" class="acc-input" checked>
+            <label for="g_step01" class="step-card">
+                <div class="card-header">
+                    <div class="step-info">
+                        <div class="step-icon">01</div>
+                        <div class="header-text">
+                            <span class="step-tag">PRODUCT</span>
+                            <h3>구글 광고 주요 상품군</h3>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-down arrow-icon"></i>
                 </div>
-            </div>
-
-            <div class="guide-item">
-                <div class="guide-icon"><i class="fas fa-lightbulb"></i></div>
-                <div class="guide-text">
-                    <h3>권장 운영 방식</h3>
-                    <p>
-                        • <b>메인-서브 전략</b>: 3개 매체 중 하나를 메인으로, PMax를 서브로 세팅<br>
-                        • <b>데이터 기반</b>: 매체 고정관념 없이 성과에 따라 유연하게 취사선택
-                    </p>
+                <div class="card-content">
+                    <div class="content-inner">
+                        <table class="step-table">
+                            <thead>
+                                <tr><th>상품명</th><th>핵심 설명</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><b>디스플레이</b></td><td>구글 제휴 사이트(뉴스, 블로그 등) 노출</td></tr>
+                                <tr><td><b>디맨드젠</b></td><td>유튜브 영상 지면 노출 위주의 관심 유도</td></tr>
+                                <tr><td><b>검색광고</b></td><td>구글 검색 시 노출로 고관여 타겟 확보</td></tr>
+                                <tr><td><b>실적최대화</b></td><td>디스플레이+유튜브+검색 전방위 커버</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            </div>
+            </label>
+
+            <input type="checkbox" id="g_step02" class="acc-input">
+            <label for="g_step02" class="step-card">
+                <div class="card-header">
+                    <div class="step-info">
+                        <div class="step-icon">02</div>
+                        <div class="header-text">
+                            <span class="step-tag">STRATEGY</span>
+                            <h3>권장 운영 방식</h3>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                </div>
+                <div class="card-content">
+                    <div class="content-inner">
+                        <p>• <b>메인-서브 전략</b>: 3개 매체 중 하나를 메인으로 설정하고, PMax를 서브로 세팅합니다.</p>
+                        <p>• <b>데이터 기반</b>: 매체 고정관념 없이 성과에 따라 유연하게 취사선택하는 것이 중요합니다.</p>
+                        <details class="tip-toggle">
+                            <summary>💡 운영 핵심 Tip</summary>
+                            <div class="tip-content">
+                                구글은 매체별로 타겟 접점이 명확히 다릅니다. 전환 최적화 데이터를 충분히 확보할 때까지 예산을 분산하기보다 성과 매체에 집중하세요.
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </label>
+
+            <input type="checkbox" id="g_notice" class="acc-input">
+            <label for="g_notice" class="step-card notice-card">
+                <div class="card-header">
+                    <div class="step-info">
+                        <div class="step-icon notice-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                        <div class="header-text">
+                            <span class="step-tag" style="color: #e53e3e;">CAUTION</span>
+                            <h3 style="color: #e53e3e;">실적최대화(PMax) 주의사항</h3>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                </div>
+                <div class="card-content">
+                    <div class="content-inner">
+                        <p>• <b>자동 노출 구조</b>: 시스템 자동 최적화로 인해 특정 매체 비중을 임의로 선택하거나 타겟팅 제외가 불가능합니다.</p>
+                        <p>• <b>운영 원칙</b>: 모든 지면에 노출되는 만큼 광고 소재(이미지, 영상, 문구)의 품질이 전체 성과를 좌우합니다.</p>
+                    </div>
+                </div>
+            </label>
         </div>
 
         <div class="title-footer">
