@@ -43,7 +43,7 @@ body, html {
     display: none;
 }
 
-/* 카드 디자인 및 호버 효과 */
+/* 카드 디자인 */
 .step-card {
     display: block;
     background: #ffffff;
@@ -73,7 +73,7 @@ body, html {
     gap: 15px;
 }
 
-/* 주황색 숫자 스타일 (심플 버전) */
+/* 주황색 숫자 스타일 */
 .step-icon {
     width: auto;
     background: transparent;
@@ -83,7 +83,7 @@ body, html {
     flex-shrink: 0;
 }
 
-/* 주황색 영문 태그 */
+/* 영문 태그 */
 .step-tag {
     font-size: 9px;
     font-weight: 850;
@@ -107,7 +107,7 @@ body, html {
     transition: transform 0.3s ease;
 }
 
-/* 아코디언 콘텐츠 영역 */
+/* 아코디언 콘텐츠 */
 .card-content {
     max-height: 0;
     overflow: hidden;
@@ -129,7 +129,7 @@ body, html {
     word-break: keep-all;
 }
 
-/* 🚀 표(Table) 스타일 */
+/* 표 스타일 */
 .step-table {
     width: 100%;
     border-collapse: collapse;
@@ -146,25 +146,20 @@ body, html {
     padding: 10px;
     text-align: left;
     border-bottom: 1px solid #e2e8f0;
-    font-weight: 700;
 }
 
 .step-table td {
     padding: 10px;
     border-bottom: 1px solid #f1f5f9;
     color: #334155;
-    line-height: 1.5;
 }
 
-.step-table tr:last-child td { border-bottom: none; }
-
-/* 🚀 토글(Details/Tip) 스타일 */
+/* 팁 토글 */
 .tip-toggle {
     margin-top: 10px;
     background: #fff9f5;
     border-radius: 10px;
     border: 1px solid #ff660022;
-    overflow: hidden;
 }
 
 .tip-toggle summary {
@@ -174,19 +169,6 @@ body, html {
     color: #ff6600;
     cursor: pointer;
     list-style: none;
-    display: flex;
-    align-items: center;
-}
-
-.tip-toggle summary::before {
-    content: '▶';
-    font-size: 9px;
-    margin-right: 8px;
-    transition: transform 0.2s;
-}
-
-.tip-toggle[open] summary::before {
-    transform: rotate(90deg);
 }
 
 .tip-content {
@@ -196,44 +178,24 @@ body, html {
     line-height: 1.6;
 }
 
-/* 🚀 머신러닝 최적화 가이드(Notice) 스타일 추가 */
-.notice-section {
-    margin-top: 30px;
-    background: #fff5f5; /* 경고 의미의 연한 붉은 배경 */
-    border-radius: 16px;
-    border: 1px solid #ffcccc;
-    padding: 20px;
-    box-shadow: 0 4px 12px rgba(229, 62, 62, 0.05);
+/* 🚀 필독 아코디언 전용 스타일 */
+.notice-card {
+    border-left: 5px solid #e53e3e !important;
+    background: #fffafa;
 }
 
-.notice-header {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 12px;
-    color: #e53e3e; /* 강조 붉은색 */
+.notice-icon {
+    color: #e53e3e !important;
+    font-size: 20px !important;
 }
 
-.notice-header h4 { 
-    margin: 0; 
-    font-size: 15px; 
-    font-weight: 800; 
-}
-
-.notice-body p {
-    font-size: 13px;
-    color: #4a5568;
-    line-height: 1.6;
-    margin: 0 0 10px 0;
-    word-break: keep-all;
-}
-
-.notice-body p:last-child { margin-bottom: 0; }
-.notice-body b { color: #1a202c; font-weight: 700; }
-
-/* ✅ 체크 시 상태 변화 */
+/* 체크 시 상태 변화 */
 .acc-input:checked + .step-card {
     border-color: #ff6600;
+}
+
+.acc-input:checked + .notice-card {
+    border-color: #e53e3e;
 }
 
 .acc-input:checked + .step-card .card-content {
@@ -246,7 +208,11 @@ body, html {
     color: #ff6600;
 }
 
-/* 푸터 스타일 */
+.acc-input:checked + .notice-card .arrow-icon {
+    color: #e53e3e;
+}
+
+/* 푸터 */
 .title-footer { 
     position: fixed;
     bottom: 0; left: 0; width: 100%; 
