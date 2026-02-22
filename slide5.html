@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>매체 운영 가이드: Meta</title>
     <link rel="stylesheet" href="style5.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
     <div class="slide-container">
-        <h2 class="slide-title">매체 운영 가이드: Meta</h2>
+        <h2 class="slide-title">매체 운영 가이드<br>Meta (FB/IG) 상세 세팅</h2>
         
         <div class="accordion-container">
             <input type="checkbox" id="step01" class="acc-input" checked>
@@ -18,15 +19,34 @@
                         <div class="step-icon">01</div>
                         <div class="header-text">
                             <span class="step-tag">CAMPAIGN</span>
-                            <h3>광고 목적 및 예산 설계</h3>
+                            <h3>광고의 목적과 전체 예산 전략 결정</h3>
                         </div>
                     </div>
                     <i class="fa-solid fa-chevron-down arrow-icon"></i>
                 </div>
                 <div class="card-content">
                     <div class="content-inner">
-                        <p>• <b>캠페인 목표</b>: 6가지 목적 중 <b>'잠재 고객 수집'</b> 필수 활용</p>
-                        <p>• <b>예산 설정</b>: 대응이 용이한 <b>'일 단위 예산'</b> 운영 기본</p>
+                        <p class="content-title"><b>[메타의 6가지 광고 목표]</b></p>
+                        <table class="step-table">
+                            <thead>
+                                <tr><th>목표</th><th>핵심 설명</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>인지도</td><td>브랜드 기억 가능성이 높은 사람에게 노출</td></tr>
+                                <tr><td>트래픽</td><td>웹사이트, 채널 등으로 방문 유도</td></tr>
+                                <tr><td>참여</td><td>영상 조회, 메시지, 참여 유도</td></tr>
+                                <tr><td>잠재 고객</td><td>양식, 채팅 등을 통한 리드 확보</td></tr>
+                                <tr><td>앱 홍보</td><td>앱 설치 및 특정 액션 유도</td></tr>
+                                <tr><td>판매</td><td>제품 구매 가능성이 높은 유저 찾기</td></tr>
+                            </tbody>
+                        </table>
+                        <details class="tip-toggle">
+                            <summary>💡 멋사 실무 Tip (클릭)</summary>
+                            <div class="tip-content">
+                                멋쟁이사자처럼 부트캠프는 지원서 제출과 상담 신청 확보가 가장 중요하기 때문에, 리드 수집에 최적화된 <b>'잠재 고객'</b> 목표를 기본으로 사용합니다.
+                            </div>
+                        </details>
+                        <p style="margin-top:15px;">• <b>예산 운영</b>: 성과 변화에 따라 즉시 예산을 조정할 수 있도록 <b>'일일 예산'</b> 운영을 원칙으로 합니다.</p>
                     </div>
                 </div>
             </label>
@@ -38,16 +58,31 @@
                         <div class="step-icon">02</div>
                         <div class="header-text">
                             <span class="step-tag">AD SET</span>
-                            <h3>타겟 및 상세 최적화</h3>
+                            <h3>누구에게, 어디서 광고를 보여줄지 설정</h3>
                         </div>
                     </div>
                     <i class="fa-solid fa-chevron-down arrow-icon"></i>
                 </div>
                 <div class="card-content">
                     <div class="content-inner">
-                        <p>• <b>성과 목표</b>: 위치 <b>'웹사이트'</b> / 목표 <b>'잠재 고객 수 극대화'</b></p>
-                        <p>• <b>데이터 세트</b>: <b>'LIKELION 통합 픽셀'</b> / 이벤트 <b>'요청 제출'</b></p>
-                        <p>• <b>일정/위치</b>: 모객 1시간 후 예약 / <b>FB&IG 지면</b> 권장</p>
+                        <table class="step-table">
+                            <thead>
+                                <tr><th>설정 항목</th><th>가이드 내용</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>전환 위치</td><td>'웹사이트' 선택</td></tr>
+                                <tr><td>픽셀 설정</td><td>'LIKELION 통합 픽셀' 확인</td></tr>
+                                <tr><td>전환 이벤트</td><td>표준 이벤트 '요청 제출' 선택</td></tr>
+                                <tr><td>노출 위치</td><td>'수동 노출 위치' 선택</td></tr>
+                            </tbody>
+                        </table>
+                        <details class="tip-toggle">
+                            <summary>💡 멋사 실무 Tip (클릭)</summary>
+                            <div class="tip-content">
+                                <b>노출 위치:</b> 효율을 위해 <b>Facebook과 Instagram 지면만 활용</b>하고, 외부 지면인 'Audience Network'는 반드시 OFF로 설정해 주세요.<br><br>
+                                <b>이벤트:</b> 메타 표준 이벤트인 <b>'요청 제출'은 주로 '지원시작' 이벤트를 기준으로 설정</b>하여 성과를 추적합니다.
+                            </div>
+                        </details>
                     </div>
                 </div>
             </label>
@@ -59,16 +94,29 @@
                         <div class="step-icon">03</div>
                         <div class="header-text">
                             <span class="step-tag">AD</span>
-                            <h3>소재 구성 및 추적 설정</h3>
+                            <h3>사용자에게 노출되는 콘텐츠 구성</h3>
                         </div>
                     </div>
                     <i class="fa-solid fa-chevron-down arrow-icon"></i>
                 </div>
                 <div class="card-content">
                     <div class="content-inner">
-                        <p>• <b>대표 계정</b>: <b>FB 멋쟁이사자처럼 / IG likelion.official</b> 필수</p>
-                        <p>• <b>소재 세팅</b>: 영상 <b>썸네일 직접 지정</b> / 음악 외 기능 취사선택</p>
-                        <p>• <b>최종 추적</b>: 파트너십 광고 해제 / <b>소재별 UTM 파라미터</b> 필수</p>
+                        <table class="step-table">
+                            <thead>
+                                <tr><th>구성 요소</th><th>체크리스트</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>대표 계정</td><td><b>FB: 멋쟁이사자처럼 / IG: likelion.official</b></td></tr>
+                                <tr><td>미디어</td><td>영상·이미지 업로드 및 수동 썸네일 지정</td></tr>
+                                <tr><td>웹사이트 URL</td><td><b>소재별 UTM 파라미터 포함 링크</b> 필수</td></tr>
+                            </tbody>
+                        </table>
+                        <details class="tip-toggle">
+                            <summary>💡 멋사 실무 Tip (클릭)</summary>
+                            <div class="tip-content">
+                                단순 페이지 주소만 넣으면 광고 성과 분석이 불가능합니다. 반드시 <b>소재별 UTM이 결합된 URL</b>을 삽입해 주세요. 행동 유도 버튼은 <b>'지금 신청하기'</b>를 가장 선호합니다.
+                            </div>
+                        </details>
                     </div>
                 </div>
             </label>
