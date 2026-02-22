@@ -58,22 +58,56 @@ body, html {
     z-index: 1;
 }
 
-/* D-Day 아이콘 강조 */
+/* 🚀 HTML 수정 없이 CSS만으로 만드는 달력 아이콘 */
 .step-icon {
-    width: 48px; /* D-10 등의 텍스트를 위해 살짝 키움 */
-    height: 48px;
-    background: #ff6600;
-    border: 4px solid #f1f5f9;
-    color: #ffffff;
-    border-radius: 50%;
+    position: relative; /* 가상 요소 배치를 위한 기준 */
+    width: 46px;
+    height: 50px;
+    background: #ffffff;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 800;
-    font-size: 13px; /* D-10이 잘 보이도록 조정 */
+    font-size: 20px; /* 메인 숫자 크기 */
+    color: #1e293b;
+    padding-top: 14px; /* 상단 바 공간만큼 숫자를 아래로 밀어줌 */
     flex-shrink: 0;
-    box-shadow: 0 4px 10px rgba(255, 102, 0, 0.2);
+    overflow: hidden;
 }
+
+/* 달력 상단 주황색 바 (가상 요소 사용) */
+.step-icon::before {
+    content: 'STEP'; /* 여기에 STEP 또는 D-DAY 등 문구 삽입 가능 */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 16px;
+    background: #ff6600;
+    color: #ffffff;
+    font-size: 9px;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 0.5px;
+}
+
+/* (선택사항) 달력 구멍 디테일 추가 */
+.step-icon::after {
+    content: '';
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 1px;
+    background: #f1f5f9;
+}
+
 
 .step-card {
     background: #ffffff;
