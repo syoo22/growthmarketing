@@ -79,7 +79,7 @@ body, html {
     background: transparent;
     color: #ff6600;
     font-weight: 800;
-    font-size: 22px; /* 2페이지 크기에 맞춰 조정 */
+    font-size: 16px; /* 2페이지 크기에 맞춰 조정 */
     flex-shrink: 0;
 }
 
