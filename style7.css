@@ -8,7 +8,7 @@
 
 body, html { 
     margin: 0; padding: 0; width: 100%; 
-    background-color: #f1f5f9; /* 통일된 연그레이 배경 */
+    background-color: #f1f5f9; 
 }
 
 .slide-container {
@@ -22,170 +22,211 @@ body, html {
     flex-direction: column;
 }
 
+/* 제목 스타일 */
 .slide-title { 
     font-size: 26px; 
     font-weight: 800; 
     color: #1e293b; 
-    margin-bottom: 30px; 
+    margin-bottom: 40px; 
     border-left: 6px solid #ff6600; 
     padding-left: 15px;
     line-height: 1.2;
-    text-align: left;
 }
 
-/* 상단 타겟 그리드 */
-.target-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+.accordion-container {
+    display: flex;
+    flex-direction: column;
     gap: 12px;
-    margin-bottom: 30px;
 }
 
-.target-card {
-    background: #ffffff; /* 흰색 카드로 변경 */
-    border: 1px solid #e2e8f0;
+.acc-input {
+    display: none;
+}
+
+/* 카드 디자인 */
+.step-card {
+    display: block;
+    background: #ffffff;
+    padding: 18px 20px; 
     border-radius: 16px;
-    padding: 15px;
-    text-align: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    border: 1px solid #e2e8f0;
+    cursor: pointer;
     transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
 }
 
-.target-card:hover {
+.step-card:hover {
     border-color: #ff6600;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(255, 102, 0, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
 }
 
-.target-tag {
-    font-size: 10px;
-    font-weight: 800;
-    color: #ff6600;
-    margin-bottom: 8px;
-    text-transform: uppercase;
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.target-card h3 {
-    font-size: 16px;
-    margin: 0 0 8px 0;
-    color: #1e293b;
-    font-weight: 800;
-}
-
-.target-card p {
-    font-size: 12px;
-    line-height: 1.5;
-    color: #475569;
-    margin: 0;
-    word-break: keep-all;
-}
-
-.target-card b {
-    color: #ff6600;
-}
-
-/* 제외 섹션 스타일 */
-.exclusion-section {
-    margin-bottom: 30px;
-}
-
-.section-label {
-    font-size: 11px;
-    font-weight: 900;
-    color: #94a3b8;
-    margin-bottom: 10px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
-
-.exclusion-box {
-    background: #ffffff; /* 배경을 흰색으로 변경 */
-    border-radius: 16px;
-    padding: 20px;
-    border: 1px solid #e2e8f0;
-    border-left: 6px solid #64748b; /* 제외 느낌을 주는 다크그레이 포인트 */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-    transition: all 0.3s ease;
-}
-
-.exclusion-box:hover {
-    border-color: #64748b; /* 호버 시 포인트 컬러 강조 */
-    transform: translateX(5px);
-}
-
-.exclusion-header {
+.step-info {
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-weight: 800;
-    font-size: 16px;
-    color: #1e293b;
-    margin-bottom: 8px;
-}
-
-.exclusion-header i { color: #ef4444; }
-
-.exclusion-box p {
-    font-size: 13.5px;
-    color: #475569;
-    margin: 0 0 15px 0;
-}
-
-.exclusion-usage {
-    font-size: 13px;
-    background: #f8fafc; /* 내부 박스는 살짝 어둡게 */
-    padding: 12px;
-    border-radius: 10px;
-    line-height: 1.7;
-    color: #334155;
-    border: 1px dashed #cbd5e1;
-}
-
-/* 하단 최적화 그리드 */
-.optimization-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
     gap: 15px;
 }
 
-.opt-box {
-    background: #fff7ed; /* 따뜻한 느낌 유지 */
-    padding: 15px;
-    border-radius: 12px;
-    border: 1px solid #fed7aa;
-    transition: all 0.3s ease;
-}
-
-.opt-box:hover {
-    border-color: #ff6600;
-    background: #ffffff;
-}
-
-.opt-header {
+/* 주황색 숫자 스타일 */
+.step-icon {
+    width: auto;
+    background: transparent;
+    color: #ff6600;
     font-weight: 800;
-    font-size: 14px;
-    color: #1e293b;
-    margin-bottom: 6px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
+    font-size: 18px; 
+    flex-shrink: 0;
 }
 
-.opt-header i { color: #ff6600; }
+/* 영문 태그 */
+.step-tag {
+    font-size: 9px;
+    font-weight: 850;
+    color: #ff6600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+    display: inline-block;
+}
 
-.opt-box p {
-    font-size: 12px;
+.header-text h3 {
+    font-size: 16px;
     margin: 0;
+    color: #334155;
+    font-weight: 700;
+}
+
+.arrow-icon {
+    font-size: 12px;
+    color: #cbd5e1;
+    transition: transform 0.3s ease;
+}
+
+/* 아코디언 콘텐츠 */
+.card-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease-out;
+    opacity: 0;
+}
+
+.content-inner {
+    padding-top: 15px;
+    margin-top: 15px;
+    border-top: 1px solid #f1f5f9;
+}
+
+.content-inner p {
+    font-size: 14px; 
+    color: #475569;
+    line-height: 1.7;
+    margin: 0 0 8px 0;
+    word-break: keep-all;
+}
+
+/* 표 스타일 */
+.step-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0 18px 0;
+    font-size: 12.5px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+}
+
+.step-table th {
+    background: #f8fafc;
+    color: #64748b;
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.step-table td {
+    padding: 10px;
+    border-bottom: 1px solid #f1f5f9;
+    color: #334155;
+}
+
+/* 팁 토글 */
+.tip-toggle {
+    margin-top: 10px;
+    background: #fff9f5;
+    border-radius: 10px;
+    border: 1px solid #ff660022;
+}
+
+.tip-toggle summary {
+    padding: 10px 14px;
+    font-size: 13px;
+    font-weight: 800;
+    color: #ff6600;
+    cursor: pointer;
+    list-style: none;
+}
+
+.tip-content {
+    padding: 0 14px 12px 14px;
+    font-size: 13px;
     color: #475569;
     line-height: 1.6;
 }
 
-/* 하단 푸터 통일 */
+/* 🚀 필독 아코디언 전용 스타일 */
+.notice-card {
+    border-left: 5px solid #e53e3e !important;
+    background: #fffafa;
+}
+
+.notice-icon {
+    color: #e53e3e !important;
+    font-size: 20px !important;
+}
+
+/* 체크 시 상태 변화 */
+.acc-input:checked + .step-card {
+    border-color: #ff6600;
+}
+
+.acc-input:checked + .notice-card {
+    border-color: #e53e3e;
+}
+
+.acc-input:checked + .step-card .card-content {
+    max-height: 1000px;
+    opacity: 1;
+}
+
+.acc-input:checked + .step-card .arrow-icon {
+    transform: rotate(180deg);
+    color: #ff6600;
+}
+
+.acc-input:checked + .notice-card .arrow-icon {
+    color: #e53e3e;
+}
+
+/* 푸터 */
 .title-footer { 
     position: fixed;
-    bottom: 0; left: 0; width: 100%; height: 60px; 
-    background-color: #ff6600; display: flex; 
-    align-items: center; justify-content: center; color: white; 
+    bottom: 0; left: 0; width: 100%; 
+    height: 60px; 
+    background-color: #ff6600; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    color: white; 
     z-index: 10;
 }
-.title-footer span { font-weight: 700; font-size: 14px; letter-spacing: 1px; }
+
+.title-footer span { 
+    font-weight: 700; 
+    font-size: 14px; 
+    letter-spacing: 1px;
+}
