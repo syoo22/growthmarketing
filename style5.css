@@ -89,7 +89,7 @@ body, html {
     font-weight: 800;
     color: #ff6600;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     margin-bottom: 2px;
     display: inline-block;
 }
