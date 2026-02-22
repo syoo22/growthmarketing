@@ -22,7 +22,7 @@ body, html {
     flex-direction: column;
 }
 
-/* 제목 스타일 (3페이지와 동일) */
+/* 제목 스타일 */
 .slide-title { 
     font-size: 26px; 
     font-weight: 800; 
@@ -43,7 +43,7 @@ body, html {
     display: none;
 }
 
-/* 🚀 카드 디자인 및 4페이지형 호버 효과 */
+/* 카드 디자인 및 호버 효과 */
 .step-card {
     display: block;
     background: #ffffff;
@@ -73,7 +73,7 @@ body, html {
     gap: 15px;
 }
 
-/* 🚀 [통일] 배경 없는 주황색 숫자 (2, 3페이지와 동일) */
+/* 주황색 숫자 스타일 */
 .step-icon {
     width: auto;
     background: transparent;
@@ -83,7 +83,7 @@ body, html {
     flex-shrink: 0;
 }
 
-/* 🚀 [통일] 배경 없는 주황색 영문 태그 (3페이지와 동일) */
+/* 주황색 영문 태그 */
 .step-tag {
     font-size: 9px;
     font-weight: 800;
@@ -107,7 +107,7 @@ body, html {
     transition: transform 0.3s ease;
 }
 
-/* 🚀 [통일] 본문 영역 (4페이지 본문 14px 크기 및 형식) */
+/* 아코디언 콘텐츠 영역 */
 .card-content {
     max-height: 0;
     overflow: hidden;
@@ -125,23 +125,75 @@ body, html {
     font-size: 14px; 
     color: #475569;
     line-height: 1.7;
-    margin: 0 0 6px 0;
+    margin: 0 0 8px 0;
     word-break: keep-all;
 }
 
-.content-inner b {
-    color: #1e293b;
+/* 🚀 표(Table) 스타일 추가 */
+.step-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0 18px 0;
+    font-size: 12.5px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+}
+
+.step-table th {
+    background: #f8fafc;
+    color: #64748b;
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
     font-weight: 700;
 }
 
-/* 강조 팁 (5페이지 전용) */
-.highlight-text { 
-    background: #fff9f5; 
-    padding: 10px 12px; 
-    border-radius: 10px; 
-    border-left: 3px solid #ff6600;
-    font-size: 13.5px !important;
-    margin: 8px 0 !important;
+.step-table td {
+    padding: 10px;
+    border-bottom: 1px solid #f1f5f9;
+    color: #334155;
+    line-height: 1.5;
+}
+
+.step-table tr:last-child td { border-bottom: none; }
+
+/* 🚀 토글(Details/Tip) 스타일 추가 */
+.tip-toggle {
+    margin-top: 10px;
+    background: #fff9f5;
+    border-radius: 10px;
+    border: 1px solid #ff660022;
+    overflow: hidden;
+}
+
+.tip-toggle summary {
+    padding: 10px 14px;
+    font-size: 13px;
+    font-weight: 800;
+    color: #ff6600;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.tip-toggle summary::before {
+    content: '▶';
+    font-size: 9px;
+    margin-right: 8px;
+    transition: transform 0.2s;
+}
+
+.tip-toggle[open] summary::before {
+    transform: rotate(90deg);
+}
+
+.tip-content {
+    padding: 0 14px 12px 14px;
+    font-size: 13px;
+    color: #475569;
+    line-height: 1.6;
 }
 
 /* ✅ 체크 시 상태 변화 */
@@ -150,7 +202,7 @@ body, html {
 }
 
 .acc-input:checked + .step-card .card-content {
-    max-height: 600px;
+    max-height: 1000px; /* 표가 들어갔으므로 높이 넉넉히 수정 */
     opacity: 1;
 }
 
@@ -159,12 +211,10 @@ body, html {
     color: #ff6600;
 }
 
-/* 푸터 스타일 통일 */
+/* 푸터 스타일 */
 .title-footer { 
     position: fixed;
-    bottom: 0; 
-    left: 0; 
-    width: 100%; 
+    bottom: 0; left: 0; width: 100%; 
     height: 60px; 
     background-color: #ff6600; 
     display: flex; 
