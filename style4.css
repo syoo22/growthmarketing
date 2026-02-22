@@ -71,7 +71,7 @@ body, html {
     align-items: center;
     justify-content: center;
     font-weight: 800;
-    font-size: 20px; /* 메인 숫자 크기 */
+    font-size: 16px; /* 메인 숫자 크기 */
     color: #1e293b;
     padding-top: 14px; /* 상단 바 공간만큼 숫자를 아래로 밀어줌 */
     flex-shrink: 0;
