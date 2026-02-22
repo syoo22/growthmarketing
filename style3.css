@@ -45,7 +45,7 @@ body, html {
 .step-card {
     display: block;
     background: #ffffff;
-    padding: 22px;
+    padding: 18px 22px; 
     border-radius: 20px;
     border: 1px solid #e2e8f0;
     cursor: pointer;
@@ -71,47 +71,47 @@ body, html {
     gap: 15px;
 }
 
-/* 🚀 [수정] 01, 02 숫자 아이콘 디자인 강화 */
+/* 🚀 [수정] 숫자 아이콘: 주황색 원형 및 사이즈 축소 */
 .step-icon {
-    width: 46px;
-    height: 46px;
-    background: linear-gradient(135deg, #ff8c00, #ff6600); /* 그라데이션 적용 */
+    width: 36px;
+    height: 36px;
+    background: #ff6600;
     color: #ffffff;
-    border-radius: 14px; /* 둥근 사각형 느낌 */
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 900;
-    font-size: 19px;
+    font-weight: 800;
+    font-size: 15px;
     flex-shrink: 0;
-    box-shadow: 0 4px 12px rgba(255, 102, 0, 0.25);
-    font-family: 'Arial Black', sans-serif; /* 기하학적인 폰트 느낌 */
+    box-shadow: 0 3px 8px rgba(255, 102, 0, 0.2);
+    font-family: 'Pretendard', sans-serif;
 }
 
-/* 🚀 [수정] 영문 태그(Preparation 등) 디자인 강화 */
+/* 🚀 [수정] 영문 태그: 배경 제거, 기울임 해제, 주황색 텍스트만 유지 */
 .step-tag {
-    font-size: 10px;
-    font-weight: 900;
-    color: #ff6600;
+    font-size: 10px; /* 가독성을 위해 소폭 조정 */
+    font-weight: 800;
+    color: #ff6600; /* 주황색 텍스트 유지 */
     text-transform: uppercase;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
     display: inline-block;
-    letter-spacing: 1.5px; /* 자간을 넓혀 세련된 느낌 */
-    background: #fff0e6;
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-style: italic; /* 약간의 기울임으로 포인트 */
+    letter-spacing: 1.2px;
+    background: transparent; /* 배경색 제거 */
+    padding: 0; /* 배경이 없으므로 패딩 제거 */
+    border-radius: 0;
+    font-style: normal; /* 기울임 해제 */
 }
 
 .card-header h3 {
-    font-size: 18px;
+    font-size: 17px;
     margin: 0;
     color: #0f172a;
     font-weight: 800;
 }
 
 .arrow-icon {
-    font-size: 14px;
+    font-size: 13px;
     color: #cbd5e1;
     transition: transform 0.4s ease;
 }
@@ -123,17 +123,16 @@ body, html {
     opacity: 0;
 }
 
-/* 열렸을 때 숫자 아이콘 색상 반전 효과 추가 */
 .acc-input:checked + .step-card .step-icon {
     background: #1e293b;
-    box-shadow: 0 4px 12px rgba(30, 41, 59, 0.2);
+    box-shadow: 0 3px 8px rgba(30, 41, 59, 0.2);
 }
 
 .team-info {
     font-size: 13px;
-    color: #94a3b8;
-    padding: 20px 0 12px 0;
-    margin-top: 20px;
+    color: #475569;
+    padding: 15px 0 10px 0;
+    margin-top: 15px;
     border-top: 1px dashed #e2e8f0;
 }
 
@@ -142,19 +141,12 @@ body, html {
     font-weight: 700;
 }
 
-.content-inner p { /* p 태그 스타일 유지 */
-    font-size: 14.5px;
-    color: #475569;
-    line-height: 1.8;
-    margin: 0 0 8px 0;
-}
-
 .acc-input:checked + .step-card {
     border-color: #ff6600;
 }
 
 .acc-input:checked + .step-card .card-content {
-    max-height: 400px;
+    max-height: 500px;
     opacity: 1;
     margin-bottom: 10px;
 }
@@ -176,7 +168,6 @@ body, html {
     justify-content: center; 
     color: white; 
     z-index: 10;
-    box-shadow: 0 -4px 15px rgba(0,0,0,0.1);
 }
 
 .title-footer span { 
