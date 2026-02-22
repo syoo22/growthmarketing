@@ -8,7 +8,7 @@
 
 body, html { 
     margin: 0; padding: 0; width: 100%; 
-    background-color: #f1f5f9; /* 다른 페이지와 통일된 배경색 */
+    background-color: #f1f5f9; 
 }
 
 .slide-container {
@@ -22,123 +22,200 @@ body, html {
     flex-direction: column;
 }
 
+/* 제목 스타일 */
 .slide-title { 
     font-size: 26px; 
     font-weight: 800; 
     color: #1e293b; 
-    margin-bottom: 30px; 
+    margin-bottom: 40px; 
     border-left: 6px solid #ff6600; 
     padding-left: 15px;
     line-height: 1.2;
-    text-align: left;
 }
 
-/* 상단 그리드 영역 */
-.product-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    margin-bottom: 30px;
+.accordion-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
-/* 상단 상품 카드 스타일 및 호버 */
-.product-card {
-    background: #ffffff; /* 흰색 카드로 변경 */
-    border: 1px solid #e2e8f0;
+.acc-input {
+    display: none;
+}
+
+/* 카드 디자인 */
+.step-card {
+    display: block;
+    background: #ffffff;
+    padding: 18px 20px; 
     border-radius: 16px;
-    padding: 18px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    border: 1px solid #e2e8f0;
+    cursor: pointer;
     transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
 }
 
-.product-card:hover {
+.step-card:hover {
     border-color: #ff6600;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(255, 102, 0, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
 }
 
 .card-header {
-    font-size: 15px;
-    font-weight: 800;
-    color: #1e293b;
-    margin-bottom: 10px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
 }
 
-.card-header::before {
-    content: '';
-    width: 4px;
-    height: 14px;
-    background: #ff6600;
-    margin-right: 8px;
-    border-radius: 2px;
-}
-
-.product-card p {
-    font-size: 13px;
-    line-height: 1.6;
-    color: #475569;
-    margin: 0;
-    word-break: keep-all;
-}
-
-/* 하단 가이드 섹션 영역 */
-.guide-section {
+.step-info {
     display: flex;
-    flex-direction: column;
+    align-items: center;
     gap: 15px;
 }
 
-/* 가이드 아이템 스타일 및 호버 */
-.guide-item {
-    display: flex;
-    gap: 15px;
-    background: #ffffff; /* 연그레이에서 흰색 카드로 변경 */
-    padding: 20px;
-    border-radius: 16px;
-    border: 1px solid #e2e8f0;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-    transition: all 0.3s ease;
-}
-
-.guide-item:hover {
-    border-color: #ff6600;
-    transform: translateX(5px); /* 가이드 리스트는 오른쪽으로 살짝 이동하는 효과 */
-    box-shadow: 0 6px 15px rgba(255, 102, 0, 0.08);
-}
-
-.guide-icon {
+/* 주황색 숫자 스타일 */
+.step-icon {
+    width: auto;
+    background: transparent;
     color: #ff6600;
-    font-size: 22px;
-    padding-top: 2px;
-}
-
-.guide-text h3 {
-    font-size: 17px;
-    margin: 0 0 8px 0;
-    color: #1e293b;
     font-weight: 800;
+    font-size: 18px; 
+    flex-shrink: 0;
 }
 
-.guide-text p {
-    font-size: 14px;
-    line-height: 1.7;
-    margin: 0;
-    color: #475569;
-}
-
-.guide-text b {
+/* 영문 태그 */
+.step-tag {
+    font-size: 9px;
+    font-weight: 850;
     color: #ff6600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+    display: inline-block;
+}
+
+.header-text h3 {
+    font-size: 16px;
+    margin: 0;
+    color: #334155;
     font-weight: 700;
 }
 
-/* 하단 푸터 통일 */
+.arrow-icon {
+    font-size: 12px;
+    color: #cbd5e1;
+    transition: transform 0.3s ease;
+}
+
+/* 아코디언 콘텐츠 */
+.card-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease-out;
+    opacity: 0;
+}
+
+.content-inner {
+    padding-top: 15px;
+    margin-top: 15px;
+    border-top: 1px solid #f1f5f9;
+}
+
+.content-inner p {
+    font-size: 14px; 
+    color: #475569;
+    line-height: 1.7;
+    margin: 0 0 8px 0;
+    word-break: keep-all;
+}
+
+/* 표 스타일 */
+.step-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0 18px 0;
+    font-size: 12.5px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+}
+
+.step-table th {
+    background: #f8fafc;
+    color: #64748b;
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.step-table td {
+    padding: 10px;
+    border-bottom: 1px solid #f1f5f9;
+    color: #334155;
+}
+
+/* 팁 토글 */
+.tip-toggle {
+    margin-top: 10px;
+    background: #fff9f5;
+    border-radius: 10px;
+    border: 1px solid #ff660022;
+}
+
+.tip-toggle summary {
+    padding: 10px 14px;
+    font-size: 13px;
+    font-weight: 800;
+    color: #ff6600;
+    cursor: pointer;
+    list-style: none;
+}
+
+.tip-content {
+    padding: 0 14px 12px 14px;
+    font-size: 13px;
+    color: #475569;
+    line-height: 1.6;
+}
+
+/* 🚀 필독 아코디언 전용 스타일 */
+.notice-card {
+    border-left: 5px solid #e53e3e !important;
+    background: #fffafa;
+}
+
+.notice-icon {
+    color: #e53e3e !important;
+    font-size: 20px !important;
+}
+
+/* 체크 시 상태 변화 */
+.acc-input:checked + .step-card {
+    border-color: #ff6600;
+}
+
+.acc-input:checked + .notice-card {
+    border-color: #e53e3e;
+}
+
+.acc-input:checked + .step-card .card-content {
+    max-height: 1000px;
+    opacity: 1;
+}
+
+.acc-input:checked + .step-card .arrow-icon {
+    transform: rotate(180deg);
+    color: #ff6600;
+}
+
+.acc-input:checked + .notice-card .arrow-icon {
+    color: #e53e3e;
+}
+
+/* 푸터 */
 .title-footer { 
     position: fixed;
-    bottom: 0; 
-    left: 0; 
-    width: 100%; 
+    bottom: 0; left: 0; width: 100%; 
     height: 60px; 
     background-color: #ff6600; 
     display: flex; 
